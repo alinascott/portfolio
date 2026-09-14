@@ -1,0 +1,956 @@
+[
+  {
+    "id": "fig-solomon-attaquin",
+    "name": "Solomon Attaquin",
+    "count": 17,
+    "events": [
+      "e35",
+      "e36",
+      "e78",
+      "e147",
+      "e148",
+      "e154",
+      "e156",
+      "e157",
+      "e171",
+      "e172",
+      "e216",
+      "e243",
+      "e255",
+      "e269",
+      "e270",
+      "e280",
+      "e292"
+    ],
+    "coOccurs": [
+      {
+        "name": "Ezra Attaquin",
+        "count": 2
+      },
+      {
+        "name": "Cynthia Attaquin",
+        "count": 2
+      },
+      {
+        "name": "John Conet",
+        "count": 2
+      },
+      {
+        "name": "Desire Mingo Attaquin",
+        "count": 1
+      },
+      {
+        "name": "Ebenezer Attaquin",
+        "count": 1
+      },
+      {
+        "name": "William Claflin",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-william-apess",
+    "name": "William Apess",
+    "count": 11,
+    "events": [
+      "e7",
+      "e108",
+      "e109",
+      "e123",
+      "e124",
+      "e129",
+      "e130",
+      "e131",
+      "e133",
+      "e134",
+      "e158"
+    ],
+    "coOccurs": [
+      {
+        "name": "Ebenezer Attaquin",
+        "count": 2
+      },
+      {
+        "name": "Josiah Fiske",
+        "count": 2
+      },
+      {
+        "name": "Phineas Fish",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-john-milton-earle",
+    "name": "John Milton Earle",
+    "count": 10,
+    "events": [
+      "e48",
+      "e82",
+      "e106",
+      "e205",
+      "e213",
+      "e214",
+      "e218",
+      "e219",
+      "e220",
+      "e268"
+    ],
+    "coOccurs": [
+      {
+        "name": "Nathaniel P. Banks",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-beulah-vanderhoop",
+    "name": "Beulah Vanderhoop",
+    "count": 10,
+    "events": [
+      "e75",
+      "e80",
+      "e113",
+      "e177",
+      "e178",
+      "e208",
+      "e271",
+      "e284",
+      "e289",
+      "e304"
+    ],
+    "coOccurs": [
+      {
+        "name": "William Vanderhoop",
+        "count": 2
+      },
+      {
+        "name": "Netta Vanderhoop",
+        "count": 2
+      },
+      {
+        "name": "Abraham Cooper",
+        "count": 1
+      },
+      {
+        "name": "Zachariah Howwaswee",
+        "count": 1
+      },
+      {
+        "name": "Mary Cleggett Vanderhoop",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-mary-cleggett-vanderhoop",
+    "name": "Mary Cleggett Vanderhoop",
+    "count": 9,
+    "events": [
+      "e0",
+      "e252",
+      "e257",
+      "e260",
+      "e274",
+      "e275",
+      "e276",
+      "e279",
+      "e284"
+    ],
+    "coOccurs": [
+      {
+        "name": "Edwin DeVries Vanderhoop",
+        "count": 1
+      },
+      {
+        "name": "William Claflin",
+        "count": 1
+      },
+      {
+        "name": "Beulah Vanderhoop",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-phineas-fish",
+    "name": "Phineas Fish",
+    "count": 9,
+    "events": [
+      "e67",
+      "e72",
+      "e73",
+      "e74",
+      "e77",
+      "e122",
+      "e123",
+      "e128",
+      "e165"
+    ],
+    "coOccurs": [
+      {
+        "name": "Josiah Quincy",
+        "count": 2
+      },
+      {
+        "name": "Ezra Attaquin",
+        "count": 1
+      },
+      {
+        "name": "Blind Joe Amos",
+        "count": 1
+      },
+      {
+        "name": "William Apess",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-alice-attaquin",
+    "name": "Alice Attaquin",
+    "count": 7,
+    "events": [
+      "e277",
+      "e278",
+      "e281",
+      "e282",
+      "e283",
+      "e285",
+      "e288"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-rebecca-amos",
+    "name": "Rebecca Amos",
+    "count": 6,
+    "events": [
+      "e22",
+      "e27",
+      "e30",
+      "e305",
+      "e306",
+      "e307"
+    ],
+    "coOccurs": [
+      {
+        "name": "Elisha Amos",
+        "count": 2
+      },
+      {
+        "name": "Nancy Michael",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-george-peters",
+    "name": "George Peters",
+    "count": 6,
+    "events": [
+      "e58",
+      "e94",
+      "e95",
+      "e99",
+      "e100",
+      "e143"
+    ],
+    "coOccurs": [
+      {
+        "name": "Sarah Francis",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "fig-elisha-amos",
+    "name": "Elisha Amos",
+    "count": 5,
+    "events": [
+      "e16",
+      "e22",
+      "e26",
+      "e27",
+      "e29"
+    ],
+    "coOccurs": [
+      {
+        "name": "Rebecca Amos",
+        "count": 2
+      },
+      {
+        "name": "Zachariah Howwaswee",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-sarah-francis",
+    "name": "Sarah Francis",
+    "count": 5,
+    "events": [
+      "e58",
+      "e68",
+      "e69",
+      "e91",
+      "e100"
+    ],
+    "coOccurs": [
+      {
+        "name": "George Peters",
+        "count": 2
+      },
+      {
+        "name": "Hannah Capen",
+        "count": 1
+      },
+      {
+        "name": "Mercy Popenna",
+        "count": 1
+      },
+      {
+        "name": "Bathsheba Wickett",
+        "count": 1
+      },
+      {
+        "name": "Hannah Pocknet",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-blind-joe-amos",
+    "name": "Blind Joe Amos",
+    "count": 5,
+    "events": [
+      "e60",
+      "e117",
+      "e119",
+      "e122",
+      "e186"
+    ],
+    "coOccurs": [
+      {
+        "name": "Phineas Fish",
+        "count": 1
+      },
+      {
+        "name": "Johann Gaspar Spurzheim",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-john-conet",
+    "name": "John Conet",
+    "count": 5,
+    "events": [
+      "e78",
+      "e84",
+      "e97",
+      "e152",
+      "e216"
+    ],
+    "coOccurs": [
+      {
+        "name": "Cynthia Attaquin",
+        "count": 2
+      },
+      {
+        "name": "Solomon Attaquin",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "fig-johann-gaspar-spurzheim",
+    "name": "Johann Gaspar Spurzheim",
+    "count": 5,
+    "events": [
+      "e81",
+      "e107",
+      "e120",
+      "e153",
+      "e186"
+    ],
+    "coOccurs": [
+      {
+        "name": "George Combe",
+        "count": 2
+      },
+      {
+        "name": "Blind Joe Amos",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-ebenezer-attaquin",
+    "name": "Ebenezer Attaquin",
+    "count": 5,
+    "events": [
+      "e124",
+      "e131",
+      "e151",
+      "e154",
+      "e155"
+    ],
+    "coOccurs": [
+      {
+        "name": "William Apess",
+        "count": 2
+      },
+      {
+        "name": "Solomon Attaquin",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-matthew-mayhew-jr",
+    "name": "Matthew Mayhew Jr.",
+    "count": 4,
+    "events": [
+      "e19",
+      "e56",
+      "e57",
+      "e150"
+    ],
+    "coOccurs": [
+      {
+        "name": "Zachariah Howwaswee",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "fig-gideon-hawley",
+    "name": "Gideon Hawley",
+    "count": 4,
+    "events": [
+      "e20",
+      "e39",
+      "e49",
+      "e61"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-zachariah-howwaswee",
+    "name": "Zachariah Howwaswee",
+    "count": 4,
+    "events": [
+      "e26",
+      "e56",
+      "e57",
+      "e80"
+    ],
+    "coOccurs": [
+      {
+        "name": "Matthew Mayhew Jr.",
+        "count": 2
+      },
+      {
+        "name": "Elisha Amos",
+        "count": 1
+      },
+      {
+        "name": "Abraham Cooper",
+        "count": 1
+      },
+      {
+        "name": "Beulah Vanderhoop",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-nancy-michael",
+    "name": "Nancy Michael",
+    "count": 4,
+    "events": [
+      "e30",
+      "e194",
+      "e197",
+      "e198"
+    ],
+    "coOccurs": [
+      {
+        "name": "Rebecca Amos",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-ezra-attaquin",
+    "name": "Ezra Attaquin",
+    "count": 4,
+    "events": [
+      "e36",
+      "e63",
+      "e72",
+      "e255"
+    ],
+    "coOccurs": [
+      {
+        "name": "Solomon Attaquin",
+        "count": 2
+      },
+      {
+        "name": "Phineas Fish",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-cynthia-attaquin",
+    "name": "Cynthia Attaquin",
+    "count": 4,
+    "events": [
+      "e78",
+      "e170",
+      "e216",
+      "e294"
+    ],
+    "coOccurs": [
+      {
+        "name": "John Conet",
+        "count": 2
+      },
+      {
+        "name": "Solomon Attaquin",
+        "count": 2
+      },
+      {
+        "name": "Allan van Gestel",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-james-w-c-pennington",
+    "name": "James W.C. Pennington",
+    "count": 4,
+    "events": [
+      "e104",
+      "e185",
+      "e200",
+      "e203"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-william-claflin",
+    "name": "William Claflin",
+    "count": 4,
+    "events": [
+      "e238",
+      "e243",
+      "e249",
+      "e276"
+    ],
+    "coOccurs": [
+      {
+        "name": "Solomon Attaquin",
+        "count": 1
+      },
+      {
+        "name": "Mary Cleggett Vanderhoop",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-matthew-mayhew-missionary",
+    "name": "Matthew Mayhew (missionary)",
+    "count": 3,
+    "events": [
+      "e3",
+      "e13",
+      "e90"
+    ],
+    "coOccurs": [
+      {
+        "name": "Elizabeth Occouch",
+        "count": 1
+      },
+      {
+        "name": "Hannah Capen",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-hannah-capen",
+    "name": "Hannah Capen",
+    "count": 3,
+    "events": [
+      "e68",
+      "e85",
+      "e90"
+    ],
+    "coOccurs": [
+      {
+        "name": "Elizabeth Occouch",
+        "count": 2
+      },
+      {
+        "name": "Mercy Popenna",
+        "count": 1
+      },
+      {
+        "name": "Sarah Francis",
+        "count": 1
+      },
+      {
+        "name": "Matthew Mayhew (missionary)",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-mercy-popenna",
+    "name": "Mercy Popenna",
+    "count": 3,
+    "events": [
+      "e68",
+      "e92",
+      "e93"
+    ],
+    "coOccurs": [
+      {
+        "name": "Bathsheba Wickett",
+        "count": 2
+      },
+      {
+        "name": "Hannah Pocknet",
+        "count": 2
+      },
+      {
+        "name": "Hannah Capen",
+        "count": 1
+      },
+      {
+        "name": "Sarah Francis",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-hannah-pocknet",
+    "name": "Hannah Pocknet",
+    "count": 3,
+    "events": [
+      "e91",
+      "e92",
+      "e93"
+    ],
+    "coOccurs": [
+      {
+        "name": "Bathsheba Wickett",
+        "count": 3
+      },
+      {
+        "name": "Mercy Popenna",
+        "count": 2
+      },
+      {
+        "name": "Sarah Francis",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-bathsheba-wickett",
+    "name": "Bathsheba Wickett",
+    "count": 3,
+    "events": [
+      "e91",
+      "e92",
+      "e93"
+    ],
+    "coOccurs": [
+      {
+        "name": "Hannah Pocknet",
+        "count": 3
+      },
+      {
+        "name": "Mercy Popenna",
+        "count": 2
+      },
+      {
+        "name": "Sarah Francis",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-george-combe",
+    "name": "George Combe",
+    "count": 3,
+    "events": [
+      "e107",
+      "e140",
+      "e153"
+    ],
+    "coOccurs": [
+      {
+        "name": "Johann Gaspar Spurzheim",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "fig-randall-burton",
+    "name": "Randall Burton",
+    "count": 3,
+    "events": [
+      "e202",
+      "e204",
+      "e206"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-rodney-french",
+    "name": "Rodney French",
+    "count": 3,
+    "events": [
+      "e239",
+      "e244",
+      "e245"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-edwin-devries-vanderhoop",
+    "name": "Edwin DeVries Vanderhoop",
+    "count": 3,
+    "events": [
+      "e260",
+      "e263",
+      "e272"
+    ],
+    "coOccurs": [
+      {
+        "name": "Mary Cleggett Vanderhoop",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-desire-mingo-attaquin",
+    "name": "Desire Mingo Attaquin",
+    "count": 2,
+    "events": [
+      "e24",
+      "e35"
+    ],
+    "coOccurs": [
+      {
+        "name": "Solomon Attaquin",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-matthias-amos",
+    "name": "Matthias Amos",
+    "count": 2,
+    "events": [
+      "e34",
+      "e242"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-barsa-jeshel",
+    "name": "Barsa Jeshel",
+    "count": 2,
+    "events": [
+      "e64",
+      "e174"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-abraham-cooper",
+    "name": "Abraham Cooper",
+    "count": 2,
+    "events": [
+      "e79",
+      "e80"
+    ],
+    "coOccurs": [
+      {
+        "name": "Beulah Vanderhoop",
+        "count": 1
+      },
+      {
+        "name": "Zachariah Howwaswee",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-elizabeth-occouch",
+    "name": "Elizabeth Occouch",
+    "count": 2,
+    "events": [
+      "e85",
+      "e90"
+    ],
+    "coOccurs": [
+      {
+        "name": "Hannah Capen",
+        "count": 2
+      },
+      {
+        "name": "Matthew Mayhew (missionary)",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-levi-lincoln",
+    "name": "Levi Lincoln",
+    "count": 2,
+    "events": [
+      "e101",
+      "e112"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-william-vanderhoop",
+    "name": "William Vanderhoop",
+    "count": 2,
+    "events": [
+      "e113",
+      "e178"
+    ],
+    "coOccurs": [
+      {
+        "name": "Beulah Vanderhoop",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "fig-josiah-quincy",
+    "name": "Josiah Quincy",
+    "count": 2,
+    "events": [
+      "e128",
+      "e165"
+    ],
+    "coOccurs": [
+      {
+        "name": "Phineas Fish",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "fig-josiah-fiske",
+    "name": "Josiah Fiske",
+    "count": 2,
+    "events": [
+      "e133",
+      "e134"
+    ],
+    "coOccurs": [
+      {
+        "name": "William Apess",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "fig-benjamin-hallett",
+    "name": "Benjamin Hallett",
+    "count": 2,
+    "events": [
+      "e139",
+      "e141"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-nathan-pocknet",
+    "name": "Nathan Pocknet",
+    "count": 2,
+    "events": [
+      "e145",
+      "e149"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-frederick-douglass",
+    "name": "Frederick Douglass",
+    "count": 2,
+    "events": [
+      "e164",
+      "e167"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-edward-jarvis",
+    "name": "Edward Jarvis",
+    "count": 2,
+    "events": [
+      "e201",
+      "e207"
+    ],
+    "coOccurs": []
+  },
+  {
+    "id": "fig-nathaniel-p-banks",
+    "name": "Nathaniel P. Banks",
+    "count": 2,
+    "events": [
+      "e217",
+      "e220"
+    ],
+    "coOccurs": [
+      {
+        "name": "John Milton Earle",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "fig-netta-vanderhoop",
+    "name": "Netta Vanderhoop",
+    "count": 2,
+    "events": [
+      "e271",
+      "e289"
+    ],
+    "coOccurs": [
+      {
+        "name": "Beulah Vanderhoop",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "fig-allan-van-gestel",
+    "name": "Allan van Gestel",
+    "count": 2,
+    "events": [
+      "e294",
+      "e297"
+    ],
+    "coOccurs": [
+      {
+        "name": "Cynthia Attaquin",
+        "count": 1
+      }
+    ]
+  }
+]

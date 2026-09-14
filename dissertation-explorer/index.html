@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Murder by Inches — Dissertation Explorer</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+  :root{
+    --ink:#1f2430; --muted:#6b7280; --bg:#f7f5f0; --card:#ffffff; --line:#e5e1d8;
+    --c-intro:#64748b; --c-overview:#ca8a04; --c-ch1:#a16207; --c-ch2:#dc2626;
+    --c-ch3:#0891b2; --c-ch4:#7c3aed; --c-conclusion:#0d9488;
+    --t-fugitivity:#0891b2; --t-selfgov:#dc2626; --t-race:#7c3aed; --t-land:#a16207; --t-memory:#0d9488;
+    --fig-accent:#db2777;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--ink); }
+  header{ padding:26px 32px 14px; max-width:1320px; margin:0 auto; }
+  header h1{ margin:0 0 6px; font-size:1.55rem; letter-spacing:-0.01em; }
+  header p{ margin:0; color:var(--muted); font-size:0.93rem; max-width:920px; line-height:1.5; }
+  .wrap{ max-width:1320px; margin:0 auto; padding:0 32px 48px; }
+  .panel{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 20px; margin-bottom:18px; box-shadow:0 1px 2px rgba(0,0,0,.03); }
+  .controls-row{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; }
+  .search-box{ flex:1; min-width:220px; max-width:360px; }
+  .search-box input{
+    width:100%; padding:8px 12px; border:1px solid var(--line); border-radius:8px; font-size:0.87rem;
+    font-family:inherit; background:var(--bg); color:var(--ink);
+  }
+  .zoom-controls{ display:flex; gap:6px; }
+  .zoom-controls button{ width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:#fff; cursor:pointer; font-size:1rem; }
+  .zoom-controls button:hover{ background:var(--bg); }
+
+  .legend-block{ margin-top:13px; padding-top:13px; border-top:1px dashed var(--line); }
+  .legend-block:first-child{ margin-top:0; padding-top:0; border-top:none; }
+  .legend{ display:flex; flex-wrap:wrap; gap:7px; align-items:center; }
+  .legend-label{ font-size:.71rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:700; margin-right:2px; }
+  .chip{
+    display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border-radius:999px; font-size:.78rem;
+    font-weight:600; border:1.5px solid transparent; cursor:pointer; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.04);
+    transition:all .15s ease; user-select:none;
+  }
+  .chip .dot{ width:9px; height:9px; border-radius:50%; flex:none; }
+  .chip.off{ opacity:.35; text-decoration:line-through; }
+  .chip.theme{ opacity:.5; }
+  .chip.theme.active{ opacity:1; border-color:currentColor; }
+
+  #chart-panel{ padding:8px 8px 4px; }
+  svg{ display:block; width:100%; height:auto; }
+  .axis text{ fill:var(--muted); font-size:11px; }
+  .axis path, .axis line{ stroke:var(--line); }
+  .track-line{ stroke:var(--line); stroke-width:2; }
+  .event-dot{ cursor:pointer; stroke:#fff; stroke-width:1.4px; transition:opacity .15s ease; }
+  .event-dot.dim{ opacity:.10; }
+  .event-range{ stroke-width:4; stroke-linecap:round; opacity:.3; }
+  .connector{ fill:none; stroke-width:1.7; opacity:.7; pointer-events:none; }
+  .tooltip{
+    position:fixed; pointer-events:none; background:var(--ink); color:#fff; padding:8px 11px; border-radius:8px;
+    font-size:.78rem; max-width:280px; line-height:1.4; box-shadow:0 6px 18px rgba(0,0,0,.25); opacity:0; transition:opacity .1s ease; z-index:50;
+  }
+  .tooltip b{ display:block; margin-bottom:2px; font-size:.82rem; }
+
+  .grid-three{ display:grid; grid-template-columns:1fr 1fr 0.9fr; gap:18px; align-items:start; }
+  @media (max-width: 1000px){ .grid-three{ grid-template-columns:1fr; } }
+
+  .section-title{ font-size:1rem; font-weight:700; margin:0 0 4px; }
+  .section-sub{ font-size:.82rem; color:var(--muted); margin:0 0 12px; }
+
+  #detail{ min-height:60px; }
+  #detail .placeholder{ color:var(--muted); font-size:.87rem; }
+  #detail .badge{ display:inline-block; padding:3px 10px; border-radius:999px; color:#fff; font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; margin-bottom:8px; margin-right:6px;}
+  #detail .date{ color:var(--muted); font-size:.8rem; font-weight:600; margin-bottom:4px; }
+  #detail h3{ margin:0 0 8px; font-size:1.08rem; }
+  #detail p{ margin:0; line-height:1.55; font-size:.9rem; color:#333; }
+  #detail .fig-row{ margin-top:10px; padding-top:8px; border-top:1px dashed var(--line); display:flex; flex-wrap:wrap; gap:6px; }
+  #detail .fig-chip{ font-size:.72rem; font-weight:700; padding:3px 9px; border-radius:999px; background:var(--bg); color:var(--fig-accent); cursor:pointer; border:1px solid var(--line); }
+
+  .fig-search{ width:100%; padding:7px 10px; border:1px solid var(--line); border-radius:8px; font-size:.83rem; margin-bottom:10px; font-family:inherit; }
+  .fig-list{ max-height:420px; overflow-y:auto; }
+  .fig-row-item{
+    display:flex; align-items:center; justify-content:space-between; gap:8px; padding:7px 9px; border-radius:8px;
+    cursor:pointer; font-size:.83rem;
+  }
+  .fig-row-item:hover{ background:var(--bg); }
+  .fig-row-item.active{ background:#fdf2f8; color:var(--fig-accent); font-weight:700; }
+  .fig-row-item .cnt{ color:var(--muted); font-size:.75rem; font-weight:700; background:var(--bg); border-radius:999px; padding:1px 8px; }
+  .fig-row-item.active .cnt{ background:#fce7f3; color:var(--fig-accent); }
+
+  .fig-detail-back{ background:none; border:none; color:var(--muted); cursor:pointer; font-size:.8rem; font-weight:700; padding:0 0 10px; }
+  .fig-detail-back:hover{ color:var(--ink); }
+  .fig-detail h3{ margin:0 0 4px; font-size:1.05rem; color:var(--fig-accent); }
+  .fig-detail .fd-count{ font-size:.78rem; color:var(--muted); margin-bottom:10px; }
+  .fig-cooccur{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+  .fig-cooccur .chip{ font-size:.72rem; padding:4px 9px; }
+  .fig-events-list .ev-row{ padding:6px 8px; border-radius:8px; cursor:pointer; font-size:.8rem; display:flex; gap:8px; align-items:baseline; }
+  .fig-events-list .ev-row:hover{ background:var(--bg); }
+  .fig-events-list .ev-year{ color:var(--muted); font-weight:700; font-size:.74rem; min-width:60px; }
+
+  footer{ text-align:center; color:var(--muted); font-size:.78rem; padding:0 32px 40px; }
+
+  #loading-banner{ text-align:center; padding:14px 20px; background:#fff; color:var(--muted); font-size:.85rem; border-bottom:1px solid var(--line); }
+  #loading-banner.error{ background:#fee2e2; color:#7f1d1d; text-align:left; max-width:720px; margin:20px auto; border-radius:10px; border:1px solid #fecaca; }
+</style>
+</head>
+<body>
+
+<div id="loading-banner">Loading timeline data…</div>
+
+<header>
+  <h1>Murder by Inches — Dissertation Explorer</h1>
+  <p>All 308 dated actions extracted from the dissertation, organized by the book's own four spaces of protest (plus intro and conclusion), filterable by cross-cutting theme, and connected through the 48 recurring named figures who tie the timeline together. Click a figure to trace every appearance and see who else they show up alongside.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="panel">
+    <div class="controls-row">
+      <div class="search-box"><input id="search-input" type="text" placeholder="Search events (e.g. petition, meetinghouse, Attaquin)…"></div>
+      <div class="zoom-controls">
+        <button id="zoom-in" title="Zoom in">+</button>
+        <button id="zoom-out" title="Zoom out">−</button>
+        <button id="zoom-reset" title="Reset zoom">⟲</button>
+      </div>
+    </div>
+
+    <div class="legend-block">
+      <div class="legend" id="chapter-legend">
+        <span class="legend-label">Spaces of protest (click to show/hide)</span>
+      </div>
+    </div>
+
+    <div class="legend-block">
+      <div class="legend" id="theme-legend">
+        <span class="legend-label">Cross-cutting themes (click to highlight)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="chart-panel">
+    <svg id="chart" viewBox="0 0 1180 560"></svg>
+  </div>
+
+  <div class="grid-three">
+    <div class="panel">
+      <p class="section-title">Selected Event</p>
+      <p class="section-sub">Click any dot for full details.</p>
+      <div id="detail"><div class="placeholder">No event selected yet — click a dot above.</div></div>
+    </div>
+
+    <div class="panel">
+      <p class="section-title">Notable Figures</p>
+      <p class="section-sub" id="fig-sub">48 recurring people tie this timeline together. Click one to trace their thread.</p>
+      <div id="figures-panel"></div>
+    </div>
+
+    <div class="panel">
+      <p class="section-title">Events per Space</p>
+      <p class="section-sub">How the 308 actions distribute across the dissertation's structure.</p>
+      <svg id="barchart" viewBox="0 0 380 340"></svg>
+    </div>
+  </div>
+
+</div>
+
+<footer>Built from Dissertation_Timeline.xlsx — 308 events, 48 recurring named figures, organized by the dissertation's own chapter structure.</footer>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+async function init(){
+  const [EVENTS, FIGURES, CHAPTER_META] = await Promise.all([
+    fetch('data/events.json').then(r => r.json()),
+    fetch('data/figures.json').then(r => r.json()),
+    fetch('data/chapters.json').then(r => r.json()),
+  ]);
+
+
+const THEME_META = {
+  fugitivity_maritime: { label: "Fugitivity & the Maritime Railroad", color: "var(--t-fugitivity)", hex:"#0891b2" },
+  selfgov_revolt:      { label: "Self-Governance & the Revolt", color: "var(--t-selfgov)", hex:"#dc2626" },
+  race_enfranchise:    { label: "Race, Enfranchisement & Belonging", color: "var(--t-race)", hex:"#7c3aed" },
+  land_guardianship:   { label: "Land & Guardianship", color: "var(--t-land)", hex:"#a16207" },
+  memory_return:       { label: "Memory, Recognition & Return", color: "var(--t-memory)", hex:"#0d9488" },
+};
+const CHAPTER_ORDER = ["preface_intro","dissertation-seed-timeline","chapter1_homestead","chapter2_parsonage_schoolhouse","chapter3_garret","chapter4_meetinghouse","conclusion"];
+const CHAPTER_COLOR_VAR = {
+  preface_intro: "var(--c-intro)", "dissertation-seed-timeline": "var(--c-overview)",
+  chapter1_homestead: "var(--c-ch1)", chapter2_parsonage_schoolhouse: "var(--c-ch2)",
+  chapter3_garret: "var(--c-ch3)", chapter4_meetinghouse: "var(--c-ch4)", conclusion: "var(--c-conclusion)"
+};
+
+const figMap = new Map(FIGURES.map(f => [f.name, f]));
+const idMap = new Map(EVENTS.map(e => [e.id, e]));
+
+let state = { hiddenChapters: new Set(), theme: null, figure: null, selected: null, search: "" };
+
+// ---------- lane assignment (alternating up/down from a single baseline) ----------
+function assignLanes(events, gap, maxLanes){
+  const sorted = [...events].sort((a,b)=>a.year-b.year);
+  const laneLast = new Array(maxLanes).fill(-Infinity);
+  sorted.forEach(e=>{
+    let chosen = 0;
+    for(let i=0;i<laneLast.length;i++){
+      if(e.year - laneLast[i] >= gap){ chosen = i; break; }
+      if(laneLast[i] < laneLast[chosen]) chosen = i;
+    }
+    e._lane = chosen;
+    laneLast[chosen] = e.year;
+  });
+  return sorted;
+}
+const MAX_LANES = 22;
+const allEvents = assignLanes(EVENTS, 2, MAX_LANES);
+
+// ---------- chapter legend ----------
+const chapterLegend = d3.select('#chapter-legend');
+CHAPTER_ORDER.forEach(ch=>{
+  const meta = CHAPTER_META[ch];
+  chapterLegend.append('span').attr('class','chip').attr('data-chapter', ch)
+    .html(`<span class="dot" style="background:${meta.color}"></span>${meta.short}`)
+    .on('click', function(){ toggleChapter(ch, this); });
+});
+
+// ---------- theme legend ----------
+const themeLegend = d3.select('#theme-legend');
+Object.entries(THEME_META).forEach(([key,meta])=>{
+  themeLegend.append('span').attr('class','chip theme').attr('data-theme', key)
+    .html(`<span class="dot" style="background:${meta.hex}"></span>${meta.label}`)
+    .on('click', function(){ toggleTheme(key, this); });
+});
+
+function toggleChapter(ch, el){
+  if(state.hiddenChapters.has(ch)){ state.hiddenChapters.delete(ch); d3.select(el).classed('off', false); }
+  else { state.hiddenChapters.add(ch); d3.select(el).classed('off', true); }
+  render();
+}
+function toggleTheme(key, el){
+  const isActive = state.theme === key;
+  d3.selectAll('.chip.theme').classed('active', false).style('color', null);
+  state.figure = null;
+  renderFiguresList();
+  if(isActive){ state.theme = null; }
+  else { state.theme = key; d3.select(el).classed('active', true).style('color', THEME_META[key].hex); }
+  render();
+}
+
+// ---------- chart setup ----------
+const svg = d3.select('#chart');
+const W = 1180, H = 560;
+const margin = {top: 20, right: 30, bottom: 40, left: 30};
+const baselineY = 300;
+const LANE_H = 16;
+
+const yearExtent = d3.extent(allEvents.flatMap(d=> d.endYear ? [d.year, d.endYear] : [d.year]));
+const xScale0 = d3.scaleLinear().domain([yearExtent[0]-8, yearExtent[1]+8]).range([margin.left, W-margin.right]);
+let xScale = xScale0;
+
+const g = svg.append('g');
+const gAxis = g.append('g').attr('class','axis');
+const gTrack = g.append('g');
+const gConnectors = g.append('g');
+const gDots = g.append('g');
+
+gTrack.append('line').attr('class','track-line')
+  .attr('x1', margin.left).attr('x2', W-margin.right).attr('y1', baselineY).attr('y2', baselineY);
+
+const xAxis = d3.axisBottom(xScale).ticks(16).tickFormat(d3.format('d'));
+gAxis.attr('transform', `translate(0,${H-margin.bottom})`).call(xAxis);
+
+function yFor(d){
+  const lane = d._lane;
+  const dir = lane % 2 === 0 ? -1 : 1;
+  const step = Math.floor(lane/2) + 1;
+  return baselineY + dir * step * LANE_H;
+}
+
+const tooltip = d3.select('#tooltip');
+
+function passesFilters(d){
+  if(state.hiddenChapters.has(d.chapter)) return false;
+  if(state.search){
+    const hay = (d.headline + ' ' + d.text).toLowerCase();
+    if(!hay.includes(state.search)) return false;
+  }
+  return true;
+}
+function isDimmed(d){
+  if(state.figure){
+    const fig = figMap.get(state.figure);
+    return !fig.events.includes(d.id);
+  }
+  if(state.theme){
+    return d.theme !== state.theme;
+  }
+  return false;
+}
+
+function render(){
+  const visible = allEvents.filter(passesFilters);
+
+  const ranged = visible.filter(d=>d.endYear);
+  const rbars = gDots.selectAll('.event-range').data(ranged, d=>d.id);
+  rbars.enter().append('line').attr('class','event-range')
+    .merge(rbars)
+    .attr('x1', d=>xScale(d.year)).attr('x2', d=>xScale(d.endYear))
+    .attr('y1', d=>yFor(d)).attr('y2', d=>yFor(d))
+    .attr('stroke', d=>CHAPTER_COLOR_VAR[d.chapter]);
+  rbars.exit().remove();
+
+  const dots = gDots.selectAll('.event-dot').data(visible, d=>d.id);
+  dots.enter().append('circle').attr('class','event-dot')
+    .attr('r', 5.5)
+    .on('mousemove', (ev,d)=>{
+      tooltip.style('opacity',1)
+        .style('left', (ev.clientX+14)+'px').style('top', (ev.clientY+10)+'px')
+        .html(`<b>${d.headline}</b>${d.displayDate} · ${CHAPTER_META[d.chapter].short}`);
+    })
+    .on('mouseleave', ()=> tooltip.style('opacity',0))
+    .on('click', (ev,d)=> selectEvent(d))
+    .merge(dots)
+    .attr('cx', d=>xScale(d.year))
+    .attr('cy', d=>yFor(d))
+    .attr('fill', d=>CHAPTER_COLOR_VAR[d.chapter])
+    .classed('dim', isDimmed)
+    .attr('stroke', d => (state.selected===d) ? '#111' : '#fff')
+    .attr('stroke-width', d => (state.selected===d) ? 3 : 1.4);
+  dots.exit().remove();
+
+  gConnectors.selectAll('*').remove();
+  if(state.figure){
+    const fig = figMap.get(state.figure);
+    const figEvents = fig.events.map(id=>idMap.get(id)).filter(Boolean).filter(passesFilters).sort((a,b)=>a.year-b.year);
+    for(let i=0;i<figEvents.length-1;i++){
+      const a = figEvents[i], b = figEvents[i+1];
+      const x1=xScale(a.year), y1=yFor(a), x2=xScale(b.year), y2=yFor(b);
+      const midY = (y1+y2)/2;
+      gConnectors.append('path').attr('class','connector')
+        .attr('stroke', 'var(--fig-accent)')
+        .attr('d', `M${x1},${y1} C${x1},${midY} ${x2},${midY} ${x2},${y2}`);
+    }
+  }
+}
+
+function selectEvent(d){
+  state.selected = d;
+  render();
+  const chMeta = CHAPTER_META[d.chapter];
+  const thMeta = THEME_META[d.theme];
+  const figsHtml = d.figures.length ? `<div class="fig-row">${d.figures.map(f=>`<span class="fig-chip" data-fig="${f}">${f}</span>`).join('')}</div>` : '';
+  d3.select('#detail').html(`
+    <span class="badge" style="background:${chMeta.color}">${chMeta.short}</span>
+    <span class="badge" style="background:${thMeta.hex}">${thMeta.label}</span>
+    <div class="date">${d.displayDate}</div>
+    <h3>${d.headline}</h3>
+    <p>${d.text}</p>
+    ${figsHtml}
+  `);
+  d3.selectAll('#detail .fig-chip').on('click', function(){
+    selectFigure(d3.select(this).attr('data-fig'));
+  });
+}
+
+function focusYear(y){
+  const k = 4;
+  const cx = xScale0(y);
+  const tx = W/2 - k*cx;
+  svg.transition().duration(600).call(zoomBehavior.transform, d3.zoomIdentity.translate(tx,0).scale(k));
+}
+
+// ---------- zoom ----------
+const zoomBehavior = d3.zoom()
+  .scaleExtent([1, 20])
+  .translateExtent([[margin.left-40,0],[W-margin.right+40,H]])
+  .on('zoom', (ev)=>{
+    xScale = ev.transform.rescaleX(xScale0);
+    gAxis.call(xAxis.scale(xScale));
+    render();
+  });
+svg.call(zoomBehavior);
+
+d3.select('#zoom-in').on('click', ()=> svg.transition().call(zoomBehavior.scaleBy, 1.5));
+d3.select('#zoom-out').on('click', ()=> svg.transition().call(zoomBehavior.scaleBy, 0.67));
+d3.select('#zoom-reset').on('click', ()=> svg.transition().call(zoomBehavior.transform, d3.zoomIdentity));
+
+// ---------- search ----------
+d3.select('#search-input').on('input', function(){
+  state.search = this.value.trim().toLowerCase();
+  render();
+});
+
+// ---------- figures panel ----------
+function renderFiguresList(){
+  d3.select('#fig-sub').text(`${FIGURES.length} recurring people tie this timeline together. Click one to trace their thread.`);
+  const host = d3.select('#figures-panel').html('');
+  host.append('input').attr('class','fig-search').attr('placeholder','Filter figures by name…')
+    .on('input', function(){
+      const q = this.value.trim().toLowerCase();
+      list.selectAll('.fig-row-item').style('display', d=> d.name.toLowerCase().includes(q) ? null : 'none');
+    });
+  const list = host.append('div').attr('class','fig-list');
+  const rows = list.selectAll('.fig-row-item').data(FIGURES).enter().append('div')
+    .attr('class','fig-row-item')
+    .on('click', (ev,d)=> selectFigure(d.name));
+  rows.append('span').text(d=>d.name);
+  rows.append('span').attr('class','cnt').text(d=>d.count);
+}
+
+function selectFigure(name){
+  const fig = figMap.get(name);
+  if(!fig) return;
+  state.figure = name;
+  state.theme = null;
+  d3.selectAll('.chip.theme').classed('active', false).style('color', null);
+  render();
+
+  const host = d3.select('#figures-panel').html('');
+  host.append('button').attr('class','fig-detail-back').html('&larr; All figures').on('click', ()=>{
+    state.figure = null; render(); renderFiguresList();
+  });
+  const detail = host.append('div').attr('class','fig-detail');
+  detail.append('h3').text(fig.name);
+  detail.append('div').attr('class','fd-count').text(`Appears in ${fig.count} events`);
+
+  if(fig.coOccurs.length){
+    detail.append('div').style('font-size','.75rem').style('font-weight','700').style('color','var(--muted)').style('margin-bottom','6px').text('Frequently appears with');
+    const cooc = detail.append('div').attr('class','fig-cooccur');
+    fig.coOccurs.forEach(c=>{
+      cooc.append('span').attr('class','chip').style('opacity',1)
+        .html(`<span class="dot" style="background:var(--fig-accent)"></span>${c.name} (${c.count})`)
+        .on('click', ()=> selectFigure(c.name));
+    });
+  }
+
+  const evList = detail.append('div').attr('class','fig-events-list');
+  evList.append('div').style('font-size','.72rem').style('text-transform','uppercase').style('letter-spacing','.05em')
+    .style('color','var(--muted)').style('font-weight','700').style('margin-bottom','6px').text('Timeline');
+  fig.events.map(id=>idMap.get(id)).filter(Boolean).sort((a,b)=>a.year-b.year).forEach(ev=>{
+    const row = evList.append('div').attr('class','ev-row').on('click', ()=> selectEvent(ev));
+    row.append('span').attr('class','ev-year').text(ev.year);
+    row.append('span').text(ev.headline);
+  });
+}
+
+renderFiguresList();
+
+// ---------- bar chart: events per chapter ----------
+function renderBarChart(){
+  const bw = 380, bh = 340;
+  const bmargin = {top:10,right:16,bottom:110,left:34};
+  const counts = CHAPTER_ORDER.map(ch=>({ ch, label: CHAPTER_META[ch].short, count: allEvents.filter(e=>e.chapter===ch).length, color: CHAPTER_META[ch].color }));
+  const bsvg = d3.select('#barchart');
+  const x0 = d3.scaleBand().domain(CHAPTER_ORDER).range([bmargin.left, bw-bmargin.right]).padding(0.25);
+  const y = d3.scaleLinear().domain([0, d3.max(counts,d=>d.count)+5]).range([bh-bmargin.bottom, bmargin.top]);
+
+  bsvg.selectAll('.bar').data(counts).enter().append('rect').attr('class','bar')
+    .attr('x', d=>x0(d.ch)).attr('width', x0.bandwidth())
+    .attr('y', d=>y(d.count)).attr('height', d=>y(0)-y(d.count))
+    .attr('fill', d=>d.color).attr('rx',3);
+
+  bsvg.selectAll('.barlabel').data(counts).enter().append('text').attr('class','barlabel')
+    .attr('x', d=>x0(d.ch)+x0.bandwidth()/2).attr('y', d=>y(d.count)-6)
+    .attr('text-anchor','middle').style('font-size','11px').style('font-weight','700').style('fill','var(--ink)')
+    .text(d=>d.count);
+
+  bsvg.append('g').attr('transform',`translate(0,${bh-bmargin.bottom})`)
+    .call(d3.axisBottom(x0).tickFormat(ch=>CHAPTER_META[ch].short))
+    .selectAll('text').attr('transform','rotate(-40)').style('text-anchor','end').style('font-size','9.5px').style('fill','var(--muted)');
+  bsvg.selectAll('.domain, .tick line').style('stroke','var(--line)');
+}
+renderBarChart();
+
+render();
+
+
+  const banner = document.getElementById('loading-banner');
+  if (banner) banner.remove();
+}
+
+init().catch(err => {
+  const banner = document.getElementById('loading-banner');
+  const msg = 'Could not load timeline data (' + err.message + '). If you opened this file '
+    + 'directly from disk (a file:// URL), your browser blocks it from fetching the data/ '
+    + 'JSON files. Serve the folder instead — e.g. run &quot;python3 -m http.server&quot; here and '
+    + 'open http://localhost:8000/, or view it via GitHub Pages.';
+  if (banner) {
+    banner.classList.add('error');
+    banner.textContent = '';
+    banner.innerHTML = msg;
+  }
+  console.error(err);
+});
+</script>
+</body>
+</html>
