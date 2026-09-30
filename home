@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -82,15 +82,15 @@
 
                 <!-- Desktop Nav -->
                 <nav class="hidden md:flex space-x-8 text-sm font-medium text-stone-600 dark:text-stone-400 items-center">
-                    <button id="nav-home" onclick="switchPage('home')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition active-nav-link">Home</button>
-                    <button id="nav-timeline" onclick="switchPage('timeline')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Dissertation Timeline</button>
-                    <button id="nav-archive" onclick="switchPage('archive')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Miss Floss Archive</button>
-                    <button id="nav-publications" onclick="switchPage('publications')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Published Writing</button>
-                    <button id="nav-github" onclick="switchPage('github')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition flex items-center gap-1.5 font-medium">
+                    <button data-page="home" onclick="switchPage('home')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition active-nav-link">Home</button>
+                    <button data-page="timeline" onclick="switchPage('timeline')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Dissertation Timeline</button>
+                    <button data-page="archive" onclick="switchPage('archive')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Miss Floss Archive</button>
+                    <button data-page="publications" onclick="switchPage('publications')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Published Writing</button>
+                    <button data-page="github" onclick="switchPage('github')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition flex items-center gap-1.5 font-medium">
                         <i data-lucide="github" class="w-4 h-4"></i> GitHub Setup
                     </button>
                     <!-- Dark Mode Toggle -->
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-md hover:bg-warmbg-200 dark:hover:bg-stone-800 transition">
+                    <button type="button" onclick="toggleDarkMode()" class="p-2 rounded-md hover:bg-warmbg-200 dark:hover:bg-stone-800 transition" aria-label="Toggle dark mode">
                         <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-stone-300"></i>
                         <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-stone-700"></i>
                     </button>
@@ -98,11 +98,11 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center gap-2">
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-md hover:bg-warmbg-200 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300">
+                    <button type="button" onclick="toggleDarkMode()" class="p-2 rounded-md hover:bg-warmbg-200 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300" aria-label="Toggle dark mode">
                         <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
                         <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
                     </button>
-                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-md text-stone-800 dark:text-stone-200">
+                    <button id="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" class="p-2 rounded-md text-stone-800 dark:text-stone-200" aria-label="Open menu">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -111,11 +111,11 @@
 
         <!-- Mobile Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-warmbg-100 dark:bg-stone-900 border-b border-warmbg-200 dark:border-stone-800 px-4 pt-2 pb-4 space-y-2 text-base font-medium">
-            <button onclick="switchPage('home'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 font-semibold">Home</button>
-            <button onclick="switchPage('timeline'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 text-stone-700 dark:text-stone-300">Dissertation Timeline</button>
-            <button onclick="switchPage('archive'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 text-stone-700 dark:text-stone-300">Miss Floss Archive</button>
-            <button onclick="switchPage('publications'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 text-stone-700 dark:text-stone-300">Published Writing</button>
-            <button onclick="switchPage('github'); toggleMobileMenu()" class="block w-full text-left py-2 text-stone-700 dark:text-stone-300 flex items-center gap-2">
+            <button data-page="home" onclick="switchPage('home'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 font-semibold text-stone-900 dark:text-stone-100">Home</button>
+            <button data-page="timeline" onclick="switchPage('timeline'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 text-stone-700 dark:text-stone-300">Dissertation Timeline</button>
+            <button data-page="archive" onclick="switchPage('archive'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 text-stone-700 dark:text-stone-300">Miss Floss Archive</button>
+            <button data-page="publications" onclick="switchPage('publications'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 text-stone-700 dark:text-stone-300">Published Writing</button>
+            <button data-page="github" onclick="switchPage('github'); toggleMobileMenu()" class="block w-full text-left py-2 text-stone-700 dark:text-stone-300 flex items-center gap-2">
                 <i data-lucide="github" class="w-4 h-4"></i> GitHub Deployment
             </button>
         </div>
@@ -133,10 +133,10 @@
                 
                 <div class="text-lg sm:text-xl text-stone-700 dark:text-stone-300 leading-relaxed font-serif space-y-5">
                     <p>
-                        I am an Educational Technology Postdoctoral fellow in the College of Liberal Arts and History Department at the University of Texas. I support faculty in COLA interested in working with digital tools and exploring new ways to engage their classes. I am curious about the implications and limitations of emerging technologies, like artificial intelligence, and the importance of building complex human skills to meet the digital moment.
+                        I am an Educational Technology Postdoctoral fellow in the College of Liberal Arts and History Department at the University of Texas. I support faculty in COLA interested in integrating innovative technologies and critical digital pedagogy into their courses.
                     </p>
                     <p>
-                        My research explores the intersection of Black and Indigenous kinship within communities in the Eastern Woodlands of the United States in the nineteenth century. I apply historical and critical archival methodologies to tell more nuanced stories of our collective past.
+                        My research explores the intersection of Black and Indigenous kinship within communities in the Eastern Woodlands of the United States in the nineteenth century. I apply historical analysis to digital humanities projects, archival storytelling, and public history initiatives.
                     </p>
                 </div>
             </div>
@@ -176,7 +176,7 @@
             <div class="space-y-6">
                 <h2 class="text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 font-semibold">Featured Digital Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div onclick="switchPage('timeline')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 transition cursor-pointer flex flex-col justify-between">
+                    <div onclick="switchPage('timeline')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
                         <div class="space-y-2">
                             <i data-lucide="git-commit" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
                             <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Dissertation Timeline</h3>
@@ -187,7 +187,7 @@
                         <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">Explore Timeline <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
                     </div>
 
-                    <div onclick="switchPage('archive')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 transition cursor-pointer flex flex-col justify-between">
+                    <div onclick="switchPage('archive')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
                         <div class="space-y-2">
                             <i data-lucide="archive" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
                             <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Miss Floss Archive</h3>
@@ -198,7 +198,7 @@
                         <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">Browse Collection <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
                     </div>
 
-                    <div onclick="switchPage('publications')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 transition cursor-pointer flex flex-col justify-between">
+                    <div onclick="switchPage('publications')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
                         <div class="space-y-2">
                             <i data-lucide="book-open" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
                             <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Published Writing</h3>
@@ -231,11 +231,11 @@
                 <div class="flex flex-wrap gap-2 w-full md:w-auto" id="timeline-filters">
                     <button onclick="filterTimeline('all')" class="tl-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900">All Events</button>
                     <button onclick="filterTimeline('petition')" class="tl-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-warmbg-200">Petitions</button>
-                    <button onclick="filterTimeline('legal')" class="tl-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-warmbg-200">Kinship & Legal</button>
+                    <button onclick="filterTimeline('legal')" class="tl-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-warmbg-200">Legal Records</button>
                 </div>
 
                 <div class="relative w-full md:w-64">
-                    <input type="text" id="timeline-search" oninput="searchTimeline()" placeholder="Search terms or names..." class="w-full pl-9 pr-4 py-1.5 bg-warmbg-50 dark:bg-stone-950 border border-warmbg-200 dark:border-stone-800 rounded-lg text-sm text-stone-900 dark:text-stone-100 focus:outline-none focus:ring-1 focus:ring-stone-400">
+                    <input type="text" id="timeline-search" oninput="searchTimeline()" placeholder="Search terms or names..." class="w-full pl-9 pr-4 py-1.5 bg-warmbg-50 dark:bg-stone-950 border border-warmbg-200 dark:border-stone-800 rounded-lg text-sm">
                     <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-3 top-2.5"></i>
                 </div>
             </div>
@@ -247,7 +247,7 @@
                     <div class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800 space-y-3">
                         <div class="flex justify-between items-start gap-2">
                             <span class="text-xs font-mono font-semibold text-stone-500">OCTOBER 1823</span>
-                            <span class="text-xs px-2 py-0.5 rounded bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-warmbg-200 dark:border-stone-700">Petitioning Campaign</span>
+                            <span class="text-xs px-2 py-0.5 rounded bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-warmbg-200 dark:border-stone-700">Petitioning</span>
                         </div>
                         <h3 class="font-serif font-semibold text-xl text-stone-900 dark:text-stone-100">Eastern Woodlands Native Remonstrance</h3>
                         <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
@@ -281,7 +281,7 @@
                     Miss Floss & The Loggers Digital Archive
                 </h1>
                 <p class="text-stone-600 dark:text-stone-400 text-sm max-w-3xl leading-relaxed">
-                    A collaborative public history project documenting rural labor history, camp cooks, and community matriarch Florence "Miss Floss" Miller through photographs, oral history recordings, and personal documents.
+                    A collaborative public history project documenting rural labor history, camp cooks, and community matriarch Florence "Miss Floss" Miller through photographs, oral history recordings, and archival documents.
                 </p>
             </div>
 
@@ -290,10 +290,10 @@
                 <div class="flex flex-wrap gap-2">
                     <button onclick="filterArchive('all')" class="archive-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900">All Items</button>
                     <button onclick="filterArchive('photograph')" class="archive-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300">Photographs</button>
-                    <button onclick="filterArchive('audio')" class="archive-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300">Oral Histories</button>
+                    <button onclick="filterArchive('audio')" class="archive-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300">Audio</button>
                 </div>
                 <div class="relative w-full md:w-60">
-                    <input type="text" id="archive-search" oninput="searchArchive()" placeholder="Filter collection..." class="w-full pl-9 pr-4 py-1.5 bg-warmbg-50 dark:bg-stone-950 border border-warmbg-200 dark:border-stone-800 rounded-lg text-sm text-stone-900 dark:text-stone-100 focus:outline-none focus:ring-1 focus:ring-stone-400">
+                    <input type="text" id="archive-search" oninput="searchArchive()" placeholder="Filter collection..." class="w-full pl-9 pr-4 py-1.5 bg-warmbg-50 dark:bg-stone-950 border border-warmbg-200 dark:border-stone-800 rounded-lg text-sm">
                     <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-3 top-2.5"></i>
                 </div>
             </div>
@@ -360,7 +360,7 @@
                     </h2>
                     <p class="text-xs text-stone-500"><em>Journal of Early American History & Archival Studies</em></p>
                     <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed pt-2 border-t border-warmbg-100 dark:border-stone-800">
-                        An examination of how 19th-century Black and Indigenous family networks utilized legal petitioning and local land registries to navigate state encroachment and assert kinship ties.
+                        An examination of how 19th-century Black and Indigenous family networks utilized legal petitioning and local land registries to navigate state encroachment and assert kinship sovereignty.
                     </p>
                 </div>
 
@@ -389,7 +389,7 @@
                 <ol class="list-decimal list-inside space-y-2">
                     <li>Create a repository on GitHub (e.g., <code class="bg-warmbg-100 dark:bg-stone-800 px-1 py-0.5 rounded">alinascott.github.io</code> or <code class="bg-warmbg-100 dark:bg-stone-800 px-1 py-0.5 rounded">portfolio</code>).</li>
                     <li>Save this file as <code class="bg-warmbg-100 dark:bg-stone-800 px-1 py-0.5 rounded">index.html</code> in the main branch of your repository.</li>
-                    <li>Go to Repository Settings &rarr; Pages &rarr; Choose main branch &rarr; Click Save.</li>
+                    <li>Go to Repository Settings → Pages → Choose main branch → Click Save.</li>
                 </ol>
             </div>
         </section>
@@ -401,10 +401,10 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p class="font-medium">Alina Scott, PhD &copy; 2026</p>
             <div class="flex space-x-6">
-                <button onclick="switchPage('home')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Home</button>
-                <button onclick="switchPage('timeline')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Timeline</button>
-                <button onclick="switchPage('archive')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Archive</button>
-                <button onclick="switchPage('publications')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Writing</button>
+                <button data-page="home" onclick="switchPage('home')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Home</button>
+                <button data-page="timeline" onclick="switchPage('timeline')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Timeline</button>
+                <button data-page="archive" onclick="switchPage('archive')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Archive</button>
+                <button data-page="publications" onclick="switchPage('publications')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Writing</button>
             </div>
         </div>
     </footer>
@@ -413,21 +413,26 @@
     <script>
         lucide.createIcons();
 
+        function setActiveNav(pageId) {
+            const navButtons = document.querySelectorAll('[data-page]');
+            navButtons.forEach(btn => {
+                const isActive = btn.dataset.page === pageId;
+                btn.classList.toggle('active-nav-link', isActive);
+                btn.setAttribute('aria-current', isActive ? 'page' : 'false');
+            });
+        }
+
         function switchPage(pageId) {
             const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => page.classList.remove('active'));
+            pages.forEach(page => {
+                page.classList.toggle('active', page.id === 'page-' + pageId);
+            });
 
-            const targetPage = document.getElementById('page-' + pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
+            setActiveNav(pageId);
 
-            const navButtons = document.querySelectorAll('header nav button');
-            navButtons.forEach(btn => btn.classList.remove('active-nav-link'));
-
-            const activeNavBtn = document.getElementById('nav-' + pageId);
-            if (activeNavBtn) {
-                activeNavBtn.classList.add('active-nav-link');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -435,7 +440,9 @@
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
         }
 
         function toggleDarkMode() {
@@ -445,48 +452,36 @@
         function filterTimeline(category) {
             const items = document.querySelectorAll('.timeline-item');
             items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
+                const matches = category === 'all' || item.getAttribute('data-category') === category;
+                item.style.display = matches ? 'block' : 'none';
             });
         }
 
         function searchTimeline() {
             const query = document.getElementById('timeline-search').value.toLowerCase();
             const items = document.querySelectorAll('.timeline-item');
+
             items.forEach(item => {
                 const text = item.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
+                item.style.display = text.includes(query) ? 'block' : 'none';
             });
         }
 
         function filterArchive(category) {
             const cards = document.querySelectorAll('.archive-card');
             cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
+                const matches = category === 'all' || card.getAttribute('data-category') === category;
+                card.style.display = matches ? 'flex' : 'none';
             });
         }
 
         function searchArchive() {
             const query = document.getElementById('archive-search').value.toLowerCase();
             const cards = document.querySelectorAll('.archive-card');
+
             cards.forEach(card => {
                 const text = card.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = text.includes(query) ? 'flex' : 'none';
             });
         }
     </script>
