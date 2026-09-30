@@ -24,13 +24,6 @@ This site serves as a central hub for my work as an Educational Technology Postd
 
 ---
 
-## Repository Structure
-
-```text
-.
-├── index.html        # Main single-page application & interactive views
-├── README.md         # Project documentation and repository overview
-└── assets/           # Images, PDF downloads, and static media (optional)
 
 
 © 2026 Alina Scott, PhD. All rights reserved.
