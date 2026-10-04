@@ -86,9 +86,6 @@
                     <button data-page="timeline" onclick="switchPage('timeline')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Dissertation Timeline</button>
                     <button data-page="archive" onclick="switchPage('archive')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Miss Floss Archive</button>
                     <button data-page="publications" onclick="switchPage('publications')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Published Writing</button>
-                    <button data-page="github" onclick="switchPage('github')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition flex items-center gap-1.5 font-medium">
-                        <i data-lucide="github" class="w-4 h-4"></i> GitHub Setup
-                    </button>
                     <!-- Dark Mode Toggle -->
                     <button type="button" onclick="toggleDarkMode()" class="p-2 rounded-md hover:bg-warmbg-200 dark:hover:bg-stone-800 transition" aria-label="Toggle dark mode">
                         <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-stone-300"></i>
@@ -114,21 +111,18 @@
             <button data-page="home" onclick="switchPage('home'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 font-semibold text-stone-900 dark:text-stone-100">Home</button>
             <button data-page="timeline" onclick="switchPage('timeline'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 text-stone-700 dark:text-stone-300">Dissertation Timeline</button>
             <button data-page="archive" onclick="switchPage('archive'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 text-stone-700 dark:text-stone-300">Miss Floss Archive</button>
-            <button data-page="publications" onclick="switchPage('publications'); toggleMobileMenu()" class="block w-full text-left py-2 border-b border-warmbg-200 dark:border-stone-800 text-stone-700 dark:text-stone-300">Published Writing</button>
-            <button data-page="github" onclick="switchPage('github'); toggleMobileMenu()" class="block w-full text-left py-2 text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                <i data-lucide="github" class="w-4 h-4"></i> GitHub Deployment
-            </button>
+            <button data-page="publications" onclick="switchPage('publications'); toggleMobileMenu()" class="block w-full text-left py-2 text-stone-700 dark:text-stone-300">Published Writing</button>
         </div>
     </header>
 
     <main class="flex-grow">
         <section id="page-home" class="page-content active max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-20 space-y-16">
-            
+
             <div class="space-y-6">
                 <h1 class="font-serif text-4xl sm:text-5xl font-normal text-stone-900 dark:text-stone-100 tracking-tight leading-tight">
                     Alina Scott, PhD
                 </h1>
-                
+
                 <div class="text-lg sm:text-xl text-stone-700 dark:text-stone-300 leading-relaxed font-serif space-y-5">
                     <p>
                         I am an Educational Technology Postdoctoral fellow in the College of Liberal Arts and History Department at the University of Texas. I support faculty in COLA interested in integrating innovative technologies and critical digital pedagogy into their courses.
@@ -172,7 +166,7 @@
             <div class="space-y-6">
                 <h2 class="text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 font-semibold">Featured Digital Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <a href="https://alinascott.github.io/ais.dissertationexplorer/" target="_blank" rel="noopener noreferrer" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
+                    <div onclick="switchPage('timeline')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
                         <div class="space-y-2">
                             <i data-lucide="git-commit" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
                             <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Dissertation Timeline</h3>
@@ -181,17 +175,17 @@
                             </p>
                         </div>
                         <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">Explore Timeline <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
-                    </a>
+                    </div>
 
                     <a href="https://alinascott.github.io/goodmorningmisslady/" target="_blank" rel="noopener noreferrer" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
                         <div class="space-y-2">
                             <i data-lucide="archive" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
-                            <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Miss Floss Archive</h3>
+                            <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Miss Floss & The Loggers</h3>
                             <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
-                                Digital gallery of photographs, oral histories, and documents on timber labor and camp community history.
+                                Interactive sound repository of historical recordings on music education, logging camps, and oral histories in Belize.
                             </p>
                         </div>
-                        <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">Browse Collection <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                        <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">Visit GitHub Page <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
                     </a>
 
                     <div onclick="switchPage('publications')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
@@ -199,7 +193,7 @@
                             <i data-lucide="book-open" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
                             <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Published Writing</h3>
                             <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
-                                Scholarly articles, public history writing, AI ethics essays, and digital humanities writing.
+                                Public history writing, conference talks, and podcast episodes on Native American and African American history.
                             </p>
                         </div>
                         <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">View Publications <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
@@ -209,188 +203,197 @@
 
         </section>
 
-        <section id="page-timeline" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-10">
+        <section id="page-timeline" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-8">
             <div class="border-b border-warmbg-200 dark:border-stone-800 pb-6 space-y-2">
                 <span class="text-xs uppercase tracking-widest text-stone-500 font-semibold">Digital Humanities & Archival Research</span>
                 <h1 class="font-serif text-3xl sm:text-4xl font-normal text-stone-900 dark:text-stone-100">
                     19th-Century Eastern Woodlands Kinship & Legal Geographies
                 </h1>
                 <p class="text-stone-600 dark:text-stone-400 text-sm max-w-3xl leading-relaxed">
-                    An archival timeline analyzing petitions, land records, and legal petitions submitted by Black and Indigenous communities across the Eastern Woodlands between 1810 and 1890.
+                    An archival timeline analyzing petitions, land records, and legal filings submitted by Black and Indigenous communities across the Eastern Woodlands between 1810 and 1890.
                 </p>
             </div>
 
-            <div class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800">
-                <p class="text-sm text-stone-600 dark:text-stone-400 mb-4">Explore the full interactive timeline with search, filters, and detailed archival records:</p>
-                <a href="https://alinascott.github.io/ais.dissertationexplorer/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-stoneAccent-800 hover:bg-stoneAccent-700 dark:bg-stone-100 dark:hover:bg-stone-200 text-white dark:text-stone-900 font-semibold rounded-lg transition">
-                    <i data-lucide="external-link" class="w-4 h-4"></i> Visit Full Timeline Project
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-warmbg-200 dark:border-stone-800 overflow-hidden shadow-sm">
+                <iframe src="https://alinascott.github.io/ais.dissertationexplorer/" title="Dissertation Timeline Explorer — live preview" class="w-full h-[650px] border-0" loading="lazy"></iframe>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                <p class="text-sm text-stone-600 dark:text-stone-400">Explore the full interactive timeline with search, filters, and detailed archival records.</p>
+                <a href="https://alinascott.github.io/ais.dissertationexplorer/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-stoneAccent-800 hover:bg-stoneAccent-700 dark:bg-stone-100 dark:hover:bg-stone-200 text-white dark:text-stone-900 font-semibold rounded-lg transition flex-shrink-0 whitespace-nowrap">
+                    <i data-lucide="external-link" class="w-4 h-4"></i> Open Full Timeline Project
                 </a>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-4 justify-between items-center bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
-                <div class="flex flex-wrap gap-2 w-full md:w-auto" id="timeline-filters">
-                    <button onclick="filterTimeline('all')" class="tl-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900">All Events</button>
-                    <button onclick="filterTimeline('petition')" class="tl-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-warmbg-200">Petitions</button>
-                    <button onclick="filterTimeline('legal')" class="tl-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-warmbg-200">Legal Records</button>
-                </div>
-
-                <div class="relative w-full md:w-64">
-                    <input type="text" id="timeline-search" oninput="searchTimeline()" placeholder="Search terms or names..." class="w-full pl-9 pr-4 py-1.5 bg-warmbg-50 dark:bg-stone-950 border border-warmbg-200 dark:border-stone-800 rounded-lg text-sm">
-                    <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-3 top-2.5"></i>
-                </div>
-            </div>
-
-            <div class="relative pl-6 md:pl-10 border-l border-stone-300 dark:border-stone-800 space-y-8 my-8" id="timeline-container">
-                <div class="timeline-item relative" data-category="petition">
-                    <div class="absolute -left-[29px] md:-left-[45px] top-1.5 w-4 h-4 rounded-full bg-stone-800 border-2 border-warmbg-50 dark:border-stone-950"></div>
-                    <div class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800 space-y-3">
-                        <div class="flex justify-between items-start gap-2">
-                            <span class="text-xs font-mono font-semibold text-stone-500">OCTOBER 1823</span>
-                            <span class="text-xs px-2 py-0.5 rounded bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-warmbg-200 dark:border-stone-700">Petitioning</span>
-                        </div>
-                        <h3 class="font-serif font-semibold text-xl text-stone-900 dark:text-stone-100">Eastern Woodlands Native Remonstrance</h3>
-                        <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                            Community members present formal petitions asserting land rights and sovereignty, resisting state-enforced land allotment schemes.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item relative" data-category="legal">
-                    <div class="absolute -left-[29px] md:-left-[45px] top-1.5 w-4 h-4 rounded-full bg-stone-800 border-2 border-warmbg-50 dark:border-stone-950"></div>
-                    <div class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800 space-y-3">
-                        <div class="flex justify-between items-start gap-2">
-                            <span class="text-xs font-mono font-semibold text-stone-500">MARCH 1841</span>
-                            <span class="text-xs px-2 py-0.5 rounded bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-warmbg-200 dark:border-stone-700">Kinship & Legal</span>
-                        </div>
-                        <h3 class="font-serif font-semibold text-xl text-stone-900 dark:text-stone-100">Black & Native Kinship Record Filings</h3>
-                        <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                            Legal proceedings and probate records detailing intercommunal land holding and extended family inheritance strategies across regional borders.
-                        </p>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <section id="page-archive" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-10">
+        <section id="page-archive" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-8">
             <div class="border-b border-warmbg-200 dark:border-stone-800 pb-6 space-y-2">
                 <span class="text-xs uppercase tracking-widest text-stone-500 font-semibold">Community Digital Archive</span>
                 <h1 class="font-serif text-3xl sm:text-4xl font-normal text-stone-900 dark:text-stone-100">
-                    Miss Floss & The Loggers Digital Archive
+                    Miss Floss and the Loggers: A Belizean Microhistory
                 </h1>
                 <p class="text-stone-600 dark:text-stone-400 text-sm max-w-3xl leading-relaxed">
-                    A collaborative public history project documenting rural labor history, camp cooks, and community matriarch Florence "Miss Floss" Miller through photographs, oral history recordings, and archival documents.
+                    An interactive sound repository featuring historical recordings from music education, logging camps, and oral histories in Belize.
                 </p>
             </div>
 
-            <div class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800">
-                <p class="text-sm text-stone-600 dark:text-stone-400 mb-4">Listen to the complete audio collection with interactive filtering and metadata:</p>
-                <a href="https://alinascott.github.io/goodmorningmisslady/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-stoneAccent-800 hover:bg-stoneAccent-700 dark:bg-stone-100 dark:hover:bg-stone-200 text-white dark:text-stone-900 font-semibold rounded-lg transition">
-                    <i data-lucide="external-link" class="w-4 h-4"></i> Listen to Audio Collection
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-warmbg-200 dark:border-stone-800 overflow-hidden shadow-sm">
+                <iframe src="https://alinascott.github.io/goodmorningmisslady/" title="Miss Floss Archive — live preview" class="w-full h-[650px] border-0" loading="lazy"></iframe>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                <p class="text-sm text-stone-600 dark:text-stone-400">Listen to the complete sound collection with interactive filtering and metadata.</p>
+                <a href="https://alinascott.github.io/goodmorningmisslady/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-stoneAccent-800 hover:bg-stoneAccent-700 dark:bg-stone-100 dark:hover:bg-stone-200 text-white dark:text-stone-900 font-semibold rounded-lg transition flex-shrink-0 whitespace-nowrap">
+                    <i data-lucide="external-link" class="w-4 h-4"></i> Open Full Archive
                 </a>
             </div>
 
-            <div class="flex flex-col md:flex-row justify-between gap-4 bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
-                <div class="flex flex-wrap gap-2">
-                    <button onclick="filterArchive('all')" class="archive-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900">All Items</button>
-                    <button onclick="filterArchive('photograph')" class="archive-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300">Photographs</button>
-                    <button onclick="filterArchive('audio')" class="archive-filter-btn px-3 py-1.5 rounded text-xs font-medium bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300">Audio</button>
-                </div>
-                <div class="relative w-full md:w-60">
-                    <input type="text" id="archive-search" oninput="searchArchive()" placeholder="Filter collection..." class="w-full pl-9 pr-4 py-1.5 bg-warmbg-50 dark:bg-stone-950 border border-warmbg-200 dark:border-stone-800 rounded-lg text-sm">
-                    <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-3 top-2.5"></i>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="archive-grid">
-                <div class="archive-card bg-white dark:bg-stone-900 rounded-xl border border-warmbg-200 dark:border-stone-800 overflow-hidden flex flex-col" data-category="photograph">
-                    <div class="h-48 bg-stone-200 dark:bg-stone-800 relative">
-                        <img src="https://placehold.co/600x400/2A2E33/FAF9F6?text=Historic+Photo+1942" alt="Camp Kitchen" class="w-full h-full object-cover">
-                        <span class="absolute top-3 right-3 bg-stone-900/80 text-white text-xs px-2 py-0.5 rounded">Photo</span>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
-                        <div>
-                            <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100">Miss Floss & Camp 4 Staff</h3>
-                            <p class="text-xs text-stone-500 mt-1">c. 1942 | Black & White Print</p>
-                            <p class="text-xs text-stone-600 dark:text-stone-400 mt-2">
-                                Florence "Miss Floss" Miller standing outside the mess hall with kitchen workers during the timber run.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="archive-card bg-white dark:bg-stone-900 rounded-xl border border-warmbg-200 dark:border-stone-800 overflow-hidden flex flex-col" data-category="audio">
-                    <div class="h-48 bg-stone-800 text-stone-100 p-6 flex flex-col justify-between">
-                        <div class="flex justify-between items-start">
-                            <i data-lucide="mic" class="w-6 h-6 text-stone-300"></i>
-                            <span class="bg-stone-700 text-xs px-2 py-0.5 rounded">Audio</span>
-                        </div>
-                        <div>
-                            <p class="text-xs font-mono text-stone-400">14m 22s</p>
-                            <p class="font-serif font-semibold text-sm">"The Winter River Drive of 1951"</p>
-                        </div>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
-                        <div>
-                            <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100">Oral History: Community Labor</h3>
-                            <p class="text-xs text-stone-500 mt-1">Recorded: July 1988</p>
-                            <p class="text-xs text-stone-600 dark:text-stone-400 mt-2">
-                                Audio interview detailing community labor, river drives, and cookhouse gathering spaces.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="bg-warmbg-100 dark:bg-stone-900/50 p-5 rounded-xl border border-warmbg-200/60 dark:border-stone-800">
+                <p class="text-xs font-semibold text-stone-700 dark:text-stone-300 uppercase tracking-wide mb-1">Source & Archival Provenance</p>
+                <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                    Materials made available through the Belize Music Project, the National Institute of Culture and History (NICH), and the Belize Music Library, hosted at the Belize Archives and Records Department.
+                </p>
             </div>
         </section>
 
-        <section id="page-publications" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-10">
+        <section id="page-publications" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-12">
             <div class="border-b border-warmbg-200 dark:border-stone-800 pb-6 space-y-2">
                 <span class="text-xs uppercase tracking-widest text-stone-500 font-semibold">Scholarship & Writing</span>
                 <h1 class="font-serif text-3xl sm:text-4xl font-normal text-stone-900 dark:text-stone-100">
-                    Publications & Multimedia Writing
+                    Published Writing, Talks & Podcasts
                 </h1>
                 <p class="text-stone-600 dark:text-stone-400 text-sm max-w-3xl leading-relaxed">
-                    Peer-reviewed historical scholarship, public history essays, AI ethics reflections, and educational technology writing.
+                    Public history writing, conference presentations, and podcast episodes on Native American and African American history, kinship, petitioning, and the digital humanities.
                 </p>
             </div>
 
-            <div class="space-y-6">
-                <div class="bg-white dark:bg-stone-900 p-6 sm:p-8 rounded-xl border border-warmbg-200 dark:border-stone-800 space-y-3">
-                    <span class="text-xs font-semibold px-2 py-0.5 rounded bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300">Historical Research</span>
-                    <h2 class="font-serif text-xl sm:text-2xl font-semibold text-stone-900 dark:text-stone-100">
-                        "Kinship, Legal Petitions, and Black-Indigenous Belonging in the 19th-Century Eastern Woodlands"
-                    </h2>
-                    <p class="text-xs text-stone-500"><em>Journal of Early American History & Archival Studies</em></p>
-                    <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed pt-2 border-t border-warmbg-100 dark:border-stone-800">
-                        An examination of how 19th-century Black and Indigenous family networks utilized legal petitioning and local land registries to navigate state encroachment and assert kinship sovereignty.
-                    </p>
-                </div>
-
-                <div class="bg-white dark:bg-stone-900 p-6 sm:p-8 rounded-xl border border-warmbg-200 dark:border-stone-800 space-y-3">
-                    <span class="text-xs font-semibold px-2 py-0.5 rounded bg-warmbg-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300">EdTech & AI Ethics</span>
-                    <h2 class="font-serif text-xl sm:text-2xl font-semibold text-stone-900 dark:text-stone-100">
-                        "Meeting the Digital Moment: Human Critical Thinking in the Age of Generative AI"
-                    </h2>
-                    <p class="text-xs text-stone-500"><em>Liberal Arts Pedagogy Forum</em></p>
-                    <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed pt-2 border-t border-warmbg-100 dark:border-stone-800">
-                        Exploring how liberal arts educators can support students in building complex human skills, critical inquiry, and ethical AI evaluation in university classrooms.
-                    </p>
+            <!-- Public History Writing -->
+            <div class="space-y-4">
+                <h2 class="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2">
+                    <i data-lucide="pen-line" class="w-5 h-5 text-bronze-600 dark:text-stone-400"></i> Public History Writing
+                </h2>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Cynthia Attaquin and a Wampanoag Network of Petitioners"</h3>
+                        <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, 2018</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Missing Signatures: The Archives at First Glance"</h3>
+                        <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, 2018</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Living in Good Relation with the Environment: A Syllabus of Radical Hope"</h3>
+                        <p class="text-xs text-stone-500 mt-1"><em>Radical Hope Syllabus: Inspiring Sustainability Transformations Through our Past</em>, 2018</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Authorship and Advocacy: The Native American Petitions Dataverse"</h3>
+                        <p class="text-xs text-stone-500 mt-1">halperta.com/criticalarchives; <em>Not Even Past</em>, 2018</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Native Literatures and Indigenous Peoples' Day: A Brief Historiography"</h3>
+                        <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, 2019</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"New Books in Native American and Indigenous Studies You Need to Read on Indigenous Peoples' Day"</h3>
+                        <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, 2020</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Resources for Teaching Black History"</h3>
+                        <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, February 2021</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section id="page-github" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-8">
-            <div class="border-b border-warmbg-200 dark:border-stone-800 pb-6 space-y-2">
-                <span class="text-xs uppercase tracking-widest text-stone-500 font-semibold">Deployment Guide</span>
-                <h1 class="font-serif text-3xl font-normal text-stone-900 dark:text-stone-100">GitHub Pages Setup</h1>
+            <!-- Talks & Presentations -->
+            <div class="space-y-4">
+                <h2 class="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2">
+                    <i data-lucide="mic-vocal" class="w-5 h-5 text-bronze-600 dark:text-stone-400"></i> Talks & Presentations
+                </h2>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Cranberry Days: Family Histories of Fugitivity on the Maritime Railroad"</h3>
+                        <p class="text-xs text-stone-500 mt-1">Institute for Historical Studies, University of Texas at Austin — February 23, 2026</p>
+                        <a href="https://liberalarts.utexas.edu/historicalstudies/events/workshop-cranberry-days-family-histories-of-fugitivity-on-the-maritime-railroad-by-nbsp-alina-i-scott-university-of-texas-at-austin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-2 hover:underline">Event page <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"'THE RESEMBLANCE OF INDIANS': Racial Logic, Tribal Recognition, and Mashpee Sovereignty in Massachusetts Law"</h3>
+                        <p class="text-xs text-stone-500 mt-1">Native American and Indigenous Studies Graduate Workshop Series — February 2026</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Doing History Online: Podcasts, Twitter, and the Digital Archive"</h3>
+                        <p class="text-xs text-stone-500 mt-1">American Historical Association Annual Conference — February 21, 2022</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Contextualizing Wampanoag Women's Petitions in the Era of Removal, 1800–1835"</h3>
+                        <p class="text-xs text-stone-500 mt-1">Oxford Early American Republic Seminar — June 2, 2021</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Communicating Your Science: The Benefits and Drawbacks of Different Media Platforms for Academics"</h3>
+                        <p class="text-xs text-stone-500 mt-1">Helsinki Research Hub on Emotions, Populism and Polarisation, University of Helsinki (Digital Panel) — May 17, 2021</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Native Women & The Petition: Contextualizing Wampanoag Land Petitions in the Native Northeast, 1811–1835"</h3>
+                        <p class="text-xs text-stone-500 mt-1">Symposium on Gender, History, & Sexuality — November 2020</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Living in Good Relation with the Environment: A Syllabus on Radical Hope"</h3>
+                        <p class="text-xs text-stone-500 mt-1">Discussion for "Radical Hope and Environmental History," Department of History, University of Texas at Austin — 2020</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">Woven into History Digital Archive</h3>
+                        <p class="text-xs text-stone-500 mt-1">The Public Archive: Doing History Online and In Public, Department of History, University of Texas at Austin — 2018</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800 space-y-4 text-sm text-stone-700 dark:text-stone-300">
-                <p>Steps to host this single-file portfolio on GitHub Pages:</p>
-                <ol class="list-decimal list-inside space-y-2">
-                    <li>Create a repository on GitHub (e.g., <code class="bg-warmbg-100 dark:bg-stone-800 px-1 py-0.5 rounded">alinascott.github.io</code> or <code class="bg-warmbg-100 dark:bg-stone-800 px-1 py-0.5 rounded">portfolio</code>).</li>
-                    <li>Save this file as <code class="bg-warmbg-100 dark:bg-stone-800 px-1 py-0.5 rounded">index.html</code> in the main branch of your repository.</li>
-                    <li>Go to Repository Settings → Pages → Choose main branch → Click Save.</li>
-                </ol>
+            <!-- Podcast Episodes -->
+            <div class="space-y-4">
+                <h2 class="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2">
+                    <i data-lucide="headphones" class="w-5 h-5 text-bronze-600 dark:text-stone-400"></i> Podcast Episodes
+                </h2>
+                <p class="text-xs text-stone-500 dark:text-stone-400">Host, <em>15 Minute History Podcast</em></p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <p class="text-xs font-mono text-stone-500">EPISODE 125</p>
+                        <h3 class="font-serif font-semibold text-sm text-stone-900 dark:text-stone-100 mt-1">Environmental Justice and Indigenous History</h3>
+                        <p class="text-xs text-stone-500 mt-1">with Dina Gilio-Whitaker</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <p class="text-xs font-mono text-stone-500">EPISODE 126</p>
+                        <h3 class="font-serif font-semibold text-sm text-stone-900 dark:text-stone-100 mt-1">Postwar Lesbian History</h3>
+                        <p class="text-xs text-stone-500 mt-1">with Lauren Jae Gutterman</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <p class="text-xs font-mono text-stone-500">EPISODE 127</p>
+                        <h3 class="font-serif font-semibold text-sm text-stone-900 dark:text-stone-100 mt-1">History of the US-Mexico Border Region</h3>
+                        <p class="text-xs text-stone-500 mt-1">with C.J. Alvarez</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <p class="text-xs font-mono text-stone-500">EPISODE 130</p>
+                        <h3 class="font-serif font-semibold text-sm text-stone-900 dark:text-stone-100 mt-1">Black Reconstruction in Indian Territory</h3>
+                        <p class="text-xs text-stone-500 mt-1">with Alaina Roberts</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <p class="text-xs font-mono text-stone-500">EPISODE 134</p>
+                        <h3 class="font-serif font-semibold text-sm text-stone-900 dark:text-stone-100 mt-1">Austin's Black History</h3>
+                        <p class="text-xs text-stone-500 mt-1">with Javier Wallace</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <p class="text-xs font-mono text-stone-500">EPISODE 136</p>
+                        <h3 class="font-serif font-semibold text-sm text-stone-900 dark:text-stone-100 mt-1">Afro-Indigenous Histories of the US</h3>
+                        <p class="text-xs text-stone-500 mt-1">with Kyle Mays</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <p class="text-xs font-mono text-stone-500">EPISODE 139</p>
+                        <h3 class="font-serif font-semibold text-sm text-stone-900 dark:text-stone-100 mt-1">New Theory of American History</h3>
+                        <p class="text-xs text-stone-500 mt-1">with Ned Blackhawk</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-4 rounded-xl border border-warmbg-200 dark:border-stone-800">
+                        <p class="text-xs font-mono text-stone-500">EPISODE 141</p>
+                        <h3 class="font-serif font-semibold text-sm text-stone-900 dark:text-stone-100 mt-1">Reconstruction From Past to Present</h3>
+                        <p class="text-xs text-stone-500 mt-1">with Peniel E. Joseph</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -445,42 +448,6 @@
 
         function toggleDarkMode() {
             document.documentElement.classList.toggle('dark');
-        }
-
-        function filterTimeline(category) {
-            const items = document.querySelectorAll('.timeline-item');
-            items.forEach(item => {
-                const matches = category === 'all' || item.getAttribute('data-category') === category;
-                item.style.display = matches ? 'block' : 'none';
-            });
-        }
-
-        function searchTimeline() {
-            const query = document.getElementById('timeline-search').value.toLowerCase();
-            const items = document.querySelectorAll('.timeline-item');
-
-            items.forEach(item => {
-                const text = item.innerText.toLowerCase();
-                item.style.display = text.includes(query) ? 'block' : 'none';
-            });
-        }
-
-        function filterArchive(category) {
-            const cards = document.querySelectorAll('.archive-card');
-            cards.forEach(card => {
-                const matches = category === 'all' || card.getAttribute('data-category') === category;
-                card.style.display = matches ? 'flex' : 'none';
-            });
-        }
-
-        function searchArchive() {
-            const query = document.getElementById('archive-search').value.toLowerCase();
-            const cards = document.querySelectorAll('.archive-card');
-
-            cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                card.style.display = text.includes(query) ? 'flex' : 'none';
-            });
         }
     </script>
 </body>
