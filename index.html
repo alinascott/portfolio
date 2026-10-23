@@ -607,8 +607,19 @@
                 mobileMenu.classList.add('hidden');
             }
 
+            if (history.replaceState) {
+                history.replaceState(null, '', pageId === 'home' ? location.pathname : '#' + pageId);
+            }
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        function openPageFromHash() {
+            const id = (location.hash || '').slice(1);
+            if (id && document.getElementById('page-' + id)) switchPage(id);
+        }
+        window.addEventListener('hashchange', openPageFromHash);
+        openPageFromHash();
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
