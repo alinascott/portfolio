@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Mrs+Saint+Delafield&family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -72,6 +72,34 @@
         }
         #projects-menu .active-nav-link .menu-check { visibility: visible; }
         .menu-check { visibility: hidden; }
+
+        /* Home ledger: women petitioners of color, 1780–1840 */
+        .ledger { display: flex; flex-direction: column; min-height: 0; background: #F3F2EE; border: 1px solid #E6E4DC; border-radius: 0.5rem; overflow: hidden; height: 15rem; }
+        @media (min-width: 768px) { .ledger { height: auto; } }
+        .dark .ledger { background: rgba(28,25,23,.5); border-color: #292524; }
+        .ledger-head { padding: .7rem .9rem .55rem; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: #78716c; border-bottom: 1px solid #E6E4DC; line-height: 1.5; }
+        .dark .ledger-head { color: #a8a29e; border-color: #292524; }
+        .ledger-roll { position: relative; flex: 1; min-height: 0; overflow: hidden;
+            -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent); }
+        .ledger-list { position: absolute; top: 0; left: 0; right: 0; padding: 0 .9rem; animation: ledger-roll 300s linear infinite; }
+        .ledger-row { display: flex; align-items: baseline; gap: .6rem; height: 34px; border-bottom: 1px solid #E6E4DC; }
+        .dark .ledger-row { border-color: #292524; }
+        .ledger-yr { font: 500 .66rem/1 Inter, sans-serif; color: #8C6D46; width: 2.4rem; flex: none; font-variant-numeric: tabular-nums; }
+        .ledger-nm { font-family: 'Mrs Saint Delafield', cursive; font-size: 1.55rem; line-height: 1; color: #2A2E33; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; min-width: 0; padding-top: .3rem; }
+        .dark .ledger-nm { color: #E6E4DC; }
+        .ledger-pl { font-size: .6rem; color: #a8a29e; flex: none; }
+        .ledger-pl b { color: #8C6D46; font-weight: 600; }
+        .ledger-foot { display: flex; justify-content: space-between; align-items: center; gap: .5rem; padding: .5rem .9rem; border-top: 1px solid #E6E4DC; font-size: .66rem; color: #78716c; font-variant-numeric: tabular-nums; }
+        .dark .ledger-foot { border-color: #292524; color: #a8a29e; }
+        .ledger-foot button { font-weight: 600; color: #705635; }
+        .dark .ledger-foot button { color: #d6d3d1; }
+        .ledger-foot button:hover { text-decoration: underline; }
+        .ledger.paused .ledger-list { animation-play-state: paused; }
+        @keyframes ledger-roll { to { transform: translateY(-50%); } }
+        @media (prefers-reduced-motion: reduce) { .ledger-list { animation: none; } }
+
+        /* Featured projects */
+        @media (prefers-reduced-motion: reduce) { #featured-projects * { transition: none !important; transform: none !important; } }
     </style>
 </head>
 <body class="bg-warmbg-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans antialiased min-h-screen flex flex-col justify-between transition-colors duration-200">
@@ -156,6 +184,7 @@
     <main class="flex-grow">
         <section id="page-home" class="page-content active max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-20 space-y-16">
 
+            <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_16rem] gap-8 md:gap-10">
             <div class="space-y-6">
                 <h1 class="font-serif text-4xl sm:text-5xl font-normal text-stone-900 dark:text-stone-100 tracking-tight leading-tight">
                     Alina Scott, PhD
@@ -171,94 +200,62 @@
                 </div>
             </div>
 
-            <hr class="border-warmbg-200 dark:border-stone-800">
-
-            <div class="space-y-6">
-                <h2 class="text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 font-semibold">Core Focus & Expertise</h2>
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-stone-800 dark:text-stone-200 text-sm sm:text-base font-medium">
-                    <li class="flex items-start gap-3 p-3 bg-warmbg-100 dark:bg-stone-900/50 rounded-lg border border-warmbg-200/60 dark:border-stone-800">
-                        <i data-lucide="check" class="w-4 h-4 text-bronze-600 dark:text-stone-400 mt-1 flex-shrink-0"></i>
-                        <span>Academic Research & Critical Archival Storytelling</span>
-                    </li>
-                    <li class="flex items-start gap-3 p-3 bg-warmbg-100 dark:bg-stone-900/50 rounded-lg border border-warmbg-200/60 dark:border-stone-800">
-                        <i data-lucide="check" class="w-4 h-4 text-bronze-600 dark:text-stone-400 mt-1 flex-shrink-0"></i>
-                        <span>Digital Humanities, AI Ethics & Educational Technology</span>
-                    </li>
-                    <li class="flex items-start gap-3 p-3 bg-warmbg-100 dark:bg-stone-900/50 rounded-lg border border-warmbg-200/60 dark:border-stone-800">
-                        <i data-lucide="check" class="w-4 h-4 text-bronze-600 dark:text-stone-400 mt-1 flex-shrink-0"></i>
-                        <span>Curriculum Design & Public History Projects</span>
-                    </li>
-                    <li class="flex items-start gap-3 p-3 bg-warmbg-100 dark:bg-stone-900/50 rounded-lg border border-warmbg-200/60 dark:border-stone-800">
-                        <i data-lucide="check" class="w-4 h-4 text-bronze-600 dark:text-stone-400 mt-1 flex-shrink-0"></i>
-                        <span>Podcasting, Multimedia Writing & Editorial Strategy</span>
-                    </li>
-                    <li class="flex items-start gap-3 p-3 bg-warmbg-100 dark:bg-stone-900/50 rounded-lg border border-warmbg-200/60 dark:border-stone-800 md:col-span-2">
-                        <i data-lucide="check" class="w-4 h-4 text-bronze-600 dark:text-stone-400 mt-1 flex-shrink-0"></i>
-                        <span>Community Engagement & Digital Publishing</span>
-                    </li>
-                </ul>
+            <aside class="ledger" id="ledger">
+                <div class="ledger-head">Women petitioners of color<br><span class="font-normal normal-case tracking-normal">Massachusetts, 1780&ndash;1840</span></div>
+                <p class="sr-only">234 women of color signed Native petitions to the Massachusetts legislature and Governor's Council between 1780 and 1840.</p>
+                <div class="ledger-roll" aria-hidden="true"><div class="ledger-list" id="ledger-list"></div></div>
+                <div class="ledger-foot"><span id="ledger-count" aria-hidden="true">Woman 1 of 234</span><button type="button" id="ledger-pause">Pause</button></div>
+            </aside>
             </div>
 
             <hr class="border-warmbg-200 dark:border-stone-800">
 
-            <div class="space-y-6">
+            <div class="space-y-6" id="featured-projects">
                 <h2 class="text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 font-semibold">Featured Digital Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div onclick="switchPage('timeline')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
-                        <div class="space-y-2">
-                            <i data-lucide="git-commit" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
-                            <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Dissertation Timeline</h3>
-                            <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
-                                Interactive timeline tracking 19th-century Eastern Woodlands petitions and kinship legal geography.
-                            </p>
-                        </div>
-                        <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">Explore Timeline <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                        <a href="#timeline" onclick="event.preventDefault(); switchPage('timeline')" class="group flex flex-col bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                            <div class="aspect-[16/10] overflow-hidden bg-warmbg-100 dark:bg-stone-800"><img src="images/timeline.jpg" alt="Gay Head Cliffs on Martha’s Vineyard: a man stands on the wet beach below the cliffs, with damage to the glass-plate negative swirling across the image." loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" style="object-position:50% 45%"></div>
+                            <div class="p-6 flex flex-col gap-2 flex-1">
+                                <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Dissertation Timeline</h3>
+                                <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">Interactive timeline tracking 19th-century Eastern Woodlands petitions and kinship legal geography.</p>
+                                <div class="mt-auto pt-3 flex items-end justify-between gap-4"><span class="text-xs font-semibold text-stone-800 dark:text-stone-300 inline-flex items-center gap-1">Explore Timeline <i data-lucide="arrow-right" class="w-3 h-3 transition group-hover:translate-x-0.5"></i></span></div>
+                                <p class="text-[11px] text-stone-400 dark:text-stone-500 leading-snug pt-2 border-t border-warmbg-200 dark:border-stone-800 mt-2">Gay Head Cliffs, Western Cape. Baldwin Coolidge, 1918. Historic New England.</p>
+                            </div>
+                        </a><a href="https://alinascott.github.io/goodmorningmisslady/" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                            <div class="aspect-[16/10] overflow-hidden bg-warmbg-100 dark:bg-stone-800"><img src="images/loggers.jpg" alt="Mahogany logs floating in the Belize River beside a town waterfront, with men rowing a small boat." loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" style="object-position:50% 60%"></div>
+                            <div class="p-6 flex flex-col gap-2 flex-1">
+                                <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Miss Floss & The Loggers</h3>
+                                <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">Interactive sound repository of historical recordings on music education, logging camps, and oral histories in Belize.</p>
+                                <div class="mt-auto pt-3 flex items-end justify-between gap-4"><span class="text-xs font-semibold text-stone-800 dark:text-stone-300 inline-flex items-center gap-1">Visit GitHub Page <i data-lucide="arrow-right" class="w-3 h-3 transition group-hover:translate-x-0.5"></i></span></div>
+                                <p class="text-[11px] text-stone-400 dark:text-stone-500 leading-snug pt-2 border-t border-warmbg-200 dark:border-stone-800 mt-2">Mahogany logs in the Belize River, ca. 1930s.</p>
+                            </div>
+                        </a><a href="#hearing" onclick="event.preventDefault(); switchPage('hearing')" class="group flex flex-col bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                            <div class="aspect-[16/10] overflow-hidden bg-warmbg-100 dark:bg-stone-800"><img src="images/hearing.jpg" alt="Title page of House Document No. 502: Hearing before the Committee on Indians, at Marshpee, Tuesday, February 9, 1869." loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" style="object-position:50% 12%"></div>
+                            <div class="p-6 flex flex-col gap-2 flex-1">
+                                <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Marshpee Hearing, 1869</h3>
+                                <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">Searchable edition of the 1869 legislative hearing at Marshpee on land, citizenship, and enfranchisement, with a page-by-page view of who spoke.</p>
+                                <div class="mt-auto pt-3 flex items-end justify-between gap-4"><span class="text-xs font-semibold text-stone-800 dark:text-stone-300 inline-flex items-center gap-1">Read the Hearing <i data-lucide="arrow-right" class="w-3 h-3 transition group-hover:translate-x-0.5"></i></span></div>
+                                <p class="text-[11px] text-stone-400 dark:text-stone-500 leading-snug pt-2 border-t border-warmbg-200 dark:border-stone-800 mt-2">Title page, House Doc. No. 502, 1869. State Library of Massachusetts.</p>
+                            </div>
+                        </a><a href="#collector" onclick="event.preventDefault(); switchPage('collector')" class="group flex flex-col bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                            <div class="aspect-[16/10] overflow-hidden bg-warmbg-100 dark:bg-stone-800"><img src="images/collector.jpg" alt="A woven textile in red, cream and brown with a key-pattern border and wool tassels at each corner." loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" style="object-position:50% 50%"></div>
+                            <div class="p-6 flex flex-col gap-2 flex-1">
+                                <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">The Collector</h3>
+                                <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">Two archives from one collection, separated in Austin and rejoined as a teaching tool for the critical archive.</p>
+                                <div class="mt-auto pt-3 flex items-end justify-between gap-4"><span class="text-xs font-semibold text-stone-800 dark:text-stone-300 inline-flex items-center gap-1">Explore the Collection <i data-lucide="arrow-right" class="w-3 h-3 transition group-hover:translate-x-0.5"></i></span></div>
+                                
+                            </div>
+                        </a>
+                        <div class="md:col-span-2"><a href="#publications" onclick="event.preventDefault(); switchPage('publications')" class="group block p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition duration-300 ">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                                <div class="space-y-1">
+                                    <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Published Writing</h3>
+                                    <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed max-w-xl">Public history writing, conference talks, and podcast episodes on Native American and African American history.</p>
+                                </div>
+                                <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 inline-flex items-center gap-1">View Publications <i data-lucide="arrow-right" class="w-3 h-3 transition group-hover:translate-x-0.5"></i></span>
+                            </div>
+                        </a></div>
                     </div>
-
-                    <a href="https://alinascott.github.io/goodmorningmisslady/" target="_blank" rel="noopener noreferrer" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
-                        <div class="space-y-2">
-                            <i data-lucide="archive" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
-                            <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Miss Floss & The Loggers</h3>
-                            <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
-                                Interactive sound repository of historical recordings on music education, logging camps, and oral histories in Belize.
-                            </p>
-                        </div>
-                        <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">Visit GitHub Page <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
-                    </a>
-
-                    <div onclick="switchPage('hearing')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
-                        <div class="space-y-2">
-                            <i data-lucide="scroll-text" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
-                            <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Marshpee Hearing, 1869</h3>
-                            <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
-                                Searchable edition of the 1869 legislative hearing at Marshpee on land, citizenship, and enfranchisement, with a page-by-page view of who spoke.
-                            </p>
-                        </div>
-                        <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">Read the Hearing <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
-                    </div>
-
-                    <div onclick="switchPage('collector')" class="group p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
-                        <div class="space-y-2">
-                            <i data-lucide="layers" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
-                            <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">The Collector</h3>
-                            <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
-                                Two archives from one collection, separated in Austin and rejoined as a teaching tool for the critical archive.
-                            </p>
-                        </div>
-                        <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">Explore the Collection <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
-                    </div>
-
-                    <div onclick="switchPage('publications')" class="group md:col-span-2 p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl hover:border-stone-400 dark:hover:border-stone-600 cursor-pointer transition">
-                        <div class="space-y-2">
-                            <i data-lucide="book-open" class="w-5 h-5 text-stone-600 dark:text-stone-400"></i>
-                            <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Published Writing</h3>
-                            <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
-                                Public history writing, conference talks, and podcast episodes on Native American and African American history.
-                            </p>
-                        </div>
-                        <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 mt-4 flex items-center gap-1">View Publications <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
-                    </div>
-                </div>
             </div>
 
         </section>
@@ -631,6 +628,29 @@
         function toggleDarkMode() {
             document.documentElement.classList.toggle('dark');
         }
+        // Home ledger: [name as first written, first dated year or null, community, petitions signed]
+        (function () {
+            const LEDGER = [["Sarah Burnee",1785,"Grafton",1],["Submitt Worcemugg",1785,"Grafton",1],["Abigail Pocknet",1792,"Mashpee",3],["Elizabeth Amos",1792,"Mashpee",1],["Rebecca Amos",1792,"Mashpee",1],["Sarah Mie",1792,"Mashpee",4],["Esther Johnson",1799,"Chappaquiddick",1],["Jane Dimond",1799,"Chappaquiddick",1],["Anna Lot",1805,"Christiantown",1],["Anna Peters",1805,"Christiantown",1],["Betsy Carter",1805,"Chappaquiddick",6],["Judy Garshom",1805,"Christiantown",1],["Sarah Francis",1805,"Christiantown",2],["Anna Cobb",1807,"Mashpee",1],["Betsey Squib",1807,"Mashpee",1],["Christina Degrass",1807,"Mashpee",3],["Eliza Hatch",1807,"Mashpee",2],["Hannah Hix",1807,"Mashpee",1],["Hitty Manasa",1807,"Mashpee",1],["Joan Smith",1807,"Mashpee",1],["Leah Keeter",1807,"Mashpee",1],["Marcy Hinson",1807,"Mashpee",1],["Mary Low",1807,"Mashpee",1],["Patience Edwards",1807,"Mashpee",2],["Rebecca Sussex",1807,"Mashpee",1],["Rebecker Pocknut",1807,"Mashpee",1],["Ruth Seppen",1807,"Mashpee",1],["Sally Gasham",1807,"Mashpee",1],["Sally Mey",1807,"Mashpee",1],["Silviney Crook",1807,"Mashpee",1],["Sophia Wamsly",1807,"Mashpee",1],["Susan Newport",1807,"Mashpee",1],["Dorcus Webquish",1808,"Herring Pond",1],["Hannah Chore",1808,"Other mainland",1],["Hannah Chummuck",1808,"Herring Pond",1],["Jerusha Moses",1808,"Herring Pond",1],["Lucy Carter",1808,"Herring Pond",1],["Matty Parsens",1808,"Herring Pond",1],["Molly Tomson",1808,"Herring Pond",1],["Patience Coomes",1808,"Herring Pond",1],["Sally Reed",1808,"Herring Pond",1],["Sarah Liberty",1808,"Herring Pond",1],["Silpher Robbins",1808,"Herring Pond",1],["Zilpah Wheelwright",1808,"Herring Pond",1],["Betsy Johnson",1809,"Chappaquiddick",1],["Charlott Mattason",1809,"Chappaquiddick",1],["Clara Johnson",1809,"Chappaquiddick",1],["Elizabeth Carter",1809,"Chappaquiddick",1],["Hannah Porridg",1809,"Chappaquiddick",2],["Jaen Sandrs",1809,"Chappaquiddick",1],["Naby Laton",1809,"Chappaquiddick",1],["Peggy Peters",1809,"Chappaquiddick",1],["Pooly Cook",1809,"Chappaquiddick",1],["Sarah Cordner",1809,"Chappaquiddick",1],["Sarah Weepquash",1809,"Chappaquiddick",1],["Betsy Curdoody",1810,"Chappaquiddick",1],["Hannah Joel",1810,"Chappaquiddick",1],["Jane Saunders",1810,"Chappaquiddick",4],["Lucy Wiemp",1810,"Chappaquiddick",1],["Sally Belain",1810,"Chappaquiddick",3],["Sally Webquish",1810,"Chappaquiddick",4],["Abigail Frances",1811,"Gay Head",1],["Amy Wamsley",1811,"Gay Head",2],["Anna Johnson",1811,"Gay Head",1],["Bulah Occooch",1811,"Gay Head",2],["Dorcas Panue",1811,"Gay Head",1],["Elizabeth Whipple",1811,"Grafton",1],["Esther Howwoswee",1811,"Gay Head",1],["Jane Amous",1811,"Mashpee",2],["Juditte Pomit",1811,"Gay Head",1],["Margaret David",1811,"Gay Head",1],["Mary Peters",1811,"Gay Head",2],["Rebecca Dodge",1811,"Gay Head",1],["Sally Attaquin",1811,"Mashpee",1],["Sarah Howwoswee",1811,"Gay Head",1],["Bersheba Sharper",1812,"Other Vineyard",1],["Bethiah Jeffers",1814,"Gay Head",1],["Hannah Divine",1814,"Gay Head",1],["Jean Cooper",1814,"Gay Head",1],["May Francis",1814,"Gay Head",1],["Roday de Grass",1814,"Gay Head",1],["Sarah Horton",1814,"Gay Head",3],["Abigail Brown",1815,"Gay Head",1],["Abigail Rogers",1815,"Gay Head",1],["Dorcas Poor",1815,"Gay Head",1],["Esther Stephens",1815,"Gay Head",1],["Hannah Cuffe",1815,"Gay Head",1],["Hannah Francis",1815,"Gay Head",1],["Hannah Mannings",1815,"Gay Head",1],["Lydia David",1815,"Gay Head",1],["Lydia Johnson",1815,"Gay Head",1],["Patience Gershom",1815,"Gay Head",1],["Peggy Bates",1815,"Gay Head",1],["Rhoda D. Grass",1815,"Gay Head",1],["Sarah Henry Hazard",1815,"Gay Head",1],["Phebe Gould",1816,"Other mainland",3],["Zerviah Johnson",1816,"Other mainland",1],["Lucy Gimbee",1819,"Grafton",1],["Eliza Weeks",1823,"Christiantown",1],["Judith James",1823,"Christiantown",2],["Louisa Peters",1823,"Christiantown",1],["Olive Mingo",1823,"Christiantown",1],["Jane Gold",1824,"Chappaquiddick",1],["Lucy Brown",1824,"Chappaquiddick",3],["Mary Cook",1824,"Chappaquiddick",2],["Abigail Luton",1826,"Chappaquiddick",4],["Annis Williamson",1826,"Chappaquiddick",1],["Betsy Carrel",1826,"Chappaquiddick",1],["Betsy Nucom",1826,"Chappaquiddick",1],["Elizabeth Johnson",1826,"Chappaquiddick",2],["Fereba Harris",1826,"Chappaquiddick",1],["Hannah Simpson",1826,"Chappaquiddick",4],["Jane Sames",1826,"Chappaquiddick",2],["Martha Williams",1826,"Chappaquiddick",1],["Nelly Joseph",1826,"Chappaquiddick",2],["Clarissa Jonas",1827,"Chappaquiddick",1],["Jane Latton",1827,"Chappaquiddick",2],["Marcy Cooke",1827,"Chappaquiddick",1],["Olive Cooke",1827,"Chappaquiddick",1],["Betsy Peters",1829,"Chappaquiddick",1],["Lovice Simpson",1829,"Chappaquiddick",1],["Abigail Moses",1834,"Mashpee",1],["Alice Quippish",1834,"Mashpee",1],["Azubah Amos",1834,"Mashpee",1],["Bethiah Hazard",1834,"Mashpee",1],["Drusilla Jackson",1834,"Mashpee",1],["Drusilla Low",1834,"Mashpee",1],["Hannah Gardner",1834,"Mashpee",1],["Hannah Hector",1834,"Other mainland",1],["Hannah Pocknet",1834,"Mashpee",1],["Lydia Robinson",1834,"Mashpee",1],["Lydia Squib",1834,"Mashpee",3],["Mary Taylor",1834,"Mashpee",1],["Mehitable Simon",1834,"Mashpee",2],["Mehitable West",1834,"Mashpee",1],["Mercy Odiorne",1834,"Mashpee",2],["Nancy Amos",1834,"Mashpee",1],["Nancy Williams",1834,"Mashpee",1],["Naomi Amos",1834,"Mashpee",2],["Narcissa Pocknot",1834,"Mashpee",2],["Pamelia Hector",1834,"Other mainland",1],["Patience Allen",1834,"Mashpee",2],["Patience Wilbur",1834,"Mashpee",2],["Prudence Pocknet",1834,"Mashpee",1],["Ruth Gardner",1834,"Mashpee",1],["Sarah Moses",1834,"Mashpee",1],["Susan Wickhams",1834,"Mashpee",1],["Sylvia Casco",1834,"Mashpee",1],["Clarissa Conet",1838,"Herring Pond",1],["Lydia Fowler",1838,"Herring Pond",1],["Martha Jackson",1838,"Herring Pond",1],["Hannah Casey",1839,"Other mainland",1],["Lucy Hecktor",1839,"Grafton",2],["Susan Hecktor",1839,"Grafton",1],["Abby Apes",null,"Mashpee",1],["Amy Wilbur",null,"Mashpee",1],["Anna Foller",null,"Mashpee",1],["Barsheba Richard",null,"Mashpee",1],["Bashsheba Burt",null,"Mashpee",1],["Bethiah Pocknett",null,"Mashpee",1],["Betsey Cowett",null,"Mashpee",1],["Betsey Smith",null,"Mashpee",1],["Betsey Spywood",null,"Mashpee",1],["Desire Mingo",null,"Mashpee",1],["Desire Simons",null,"Mashpee",1],["Diademia Tobia",null,"Mashpee",1],["Dianah Gardner",null,"Mashpee",1],["Dianah Wickum",null,"Mashpee",1],["Dorkas Weebquish",null,"Mashpee",1],["Eliza Hush",null,"Mashpee",1],["Elizabeth Pollard",null,"Mashpee",1],["Ellezebeth Squib",null,"Mashpee",1],["Eunice Pocknett",null,"Mashpee",1],["Genny Dodge",null,"Mashpee",1],["Hannah Badcock",null,"Mashpee",1],["Harriet Austin",null,"Mashpee",1],["Jane Hammond",null,"Mashpee",1],["Jane Low",null,"Mashpee",1],["Jane Marston",null,"Mashpee",1],["Jane Wamsley",null,"Mashpee",1],["Joannah Cowet",null,"Mashpee",2],["Judith Outtukque",null,"Gay Head",1],["Julia Ann Pocknett",null,"Mashpee",1],["Leah Lewis",null,"Mashpee",1],["Lelia Badcock",null,"Mashpee",1],["Lois Gould",null,"Mashpee",1],["Lydia Coombs",null,"Mashpee",2],["Lydia Jackson",null,"Mashpee",1],["Mahalee Reed",null,"Mashpee",1],["Margery Garner",null,"Mashpee",1],["Mariah Browne",null,"Mashpee",1],["Mariah Wilbur",null,"Mashpee",1],["Martha Henson",null,"Mashpee",1],["Martha Pocknett",null,"Mashpee",1],["Mary Amos",null,"Mashpee",1],["Mary Brown",null,"Mashpee",1],["Mary Ceptem",null,"Mashpee",1],["Mary Frances",null,"Gay Head",1],["Mary Hush",null,"Mashpee",1],["Mary Jones",null,"Mashpee",1],["Mary Keeter",null,"Mashpee",1],["Mary Marston",null,"Mashpee",1],["Mary Peppner",null,"Mashpee",1],["Matilda Gardner",null,"Mashpee",1],["Mercy Ralph",null,"Mashpee",1],["Nancy Ame",null,"Mashpee",2],["Nancy Green",null,"Mashpee",1],["Ofeliea Cezar",null,"Mashpee",1],["Olive Williams",null,"Mashpee",1],["Patience Crook",null,"Mashpee",1],["Patience Downs",null,"Mashpee",1],["Patience Womsley",null,"Mashpee",1],["Persis Attaquin",null,"Mashpee",1],["Phebe Amos",null,"Mashpee",1],["Rebeccah Low",null,"Mashpee",1],["Ruth Williams",null,"Mashpee",1],["Sally Hicks",null,"Mashpee",1],["Sally Hinson",null,"Mashpee",1],["Sally Smith",null,"Mashpee",1],["Sarah Attaquin",null,"Mashpee",1],["Sarah Canada",null,"Mashpee",1],["Sarah Holden",null,"Mashpee",2],["Sarah Johnson",null,"Gay Head",1],["Sarah Jones",null,"Mashpee",1],["Sarah Keeter",null,"Mashpee",1],["Sarah Pognet",null,"Mashpee",1],["Sarah Quibish",null,"Mashpee",1],["Sarah Robbins",null,"Mashpee",1],["Sarah Simon",null,"Mashpee",1],["Sarah Squib",null,"Mashpee",1],["Sefronah Holmes",null,"Mashpee",1],["Susannah HInson",null,"Mashpee",1],["Susannah Miah",null,"Mashpee",1],["Thankful Robbins",null,"Mashpee",1]];
+            const box = document.getElementById('ledger'), list = document.getElementById('ledger-list'), count = document.getElementById('ledger-count');
+            if (!box) return;
+            const ROW = 34;
+            const rows = LEDGER.map(([n, y, c, k]) => `<div class="ledger-row"><span class="ledger-yr">${y || 'n.d.'}</span><span class="ledger-nm">${n}</span><span class="ledger-pl">${c}${k > 1 ? ` <b>&times;${k}</b>` : ''}</span></div>`).join('');
+            list.innerHTML = rows + rows;
+            list.style.animationDuration = (LEDGER.length * 1.3) + 's';
+            document.getElementById('ledger-pause').addEventListener('click', e => {
+                const p = box.classList.toggle('paused');
+                e.target.textContent = p ? 'Play' : 'Pause';
+            });
+            if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const tick = () => {
+                const m = new DOMMatrixReadOnly(getComputedStyle(list).transform);
+                const idx = Math.floor((-m.m42 + list.parentElement.clientHeight / 2) / ROW) % LEDGER.length;
+                count.textContent = `Woman ${idx + 1} of ${LEDGER.length} \u00b7 ${LEDGER[idx][1] || 'undated'}`;
+                requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        })();
+
     </script>
 </body>
 </html>
