@@ -1,4 +1,5 @@
-# Personal Portfolio & Digital Humanities Hub | Dr. Alina Scott
+# Personal Portfolio & Digital Humanities Hub 
+Dr. Alina Scott
 
 Welcome to the source repository for my personal portfolio and digital humanities landing page, hosted live via [GitHub Pages](https://alinascott.github.io).
 
@@ -11,7 +12,8 @@ This site serves as a central hub for my work as an Educational Technology Postd
 * **Homepage / Bio:** An overview of my academic background, educational technology work, AI ethics focus, and core research in 19th-century Black and Indigenous kinship.
 * **Dissertation Timeline Project:** An interactive spatial and temporal exploration of 19th-century petitioning campaigns, legal records, and critical archival methodologies in the Eastern Woodlands.
 * **Miss Floss and the Loggers Archive:** A digital community repository featuring oral histories, digitized manuscript scans, historical photographs, and field audio.
-* **Published Writing:** A curated index of peer-reviewed articles, public history pieces, and essays on digital humanities pedagogy.
+* **Writing:** A curated index of peer-reviewed articles, public history pieces, and essays on digital humanities pedagogy.
+* **Newsletter — One One Cocoa:** Essays from my Substack ([alinascott.substack.com](https://alinascott.substack.com/)) on public history, primary sources, and art in conversation.
 
 ---
 
