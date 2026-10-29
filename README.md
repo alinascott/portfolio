@@ -1,7 +1,7 @@
 # Personal Portfolio & Digital Humanities Hub 
 Dr. Alina Scott
 
-Welcome to the source repository for my personal portfolio and digital humanities landing page, hosted live via [GitHub Pages](https://alinascott.github.io).
+Welcome to the source repository for my personal portfolio and digital humanities landing page, hosted live via [GitHub Pages](https://alinascott.github.io). Open here: [https://alinascott.github.io/portfolio/](https://alinascott.github.io/portfolio/)
 
 This site serves as a central hub for my work as an Educational Technology Postdoctoral Fellow at the University of Texas at Austin, bringing together academic research, digital pedagogy projects, critical archival work, and public writing.
 
