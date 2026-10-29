@@ -100,6 +100,10 @@
 
         /* Featured projects */
         @media (prefers-reduced-motion: reduce) { #featured-projects * { transition: none !important; transform: none !important; } }
+        .cv-tab { color: #5A6065; background: #fff; }
+        .cv-tab[aria-selected="true"] { background: #2A2E33; color: #FAF9F6; border-color: #2A2E33; }
+        .dark .cv-tab { background: #1c1917; color: #d6d3d1; }
+        .dark .cv-tab[aria-selected="true"] { background: #e7e5e4; color: #0c0a09; border-color: #e7e5e4; }
     </style>
 </head>
 <body class="bg-warmbg-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans antialiased min-h-screen flex flex-col justify-between transition-colors duration-200">
@@ -144,9 +148,17 @@
                                 <i data-lucide="check" class="menu-check w-4 h-4 mt-0.5 flex-none"></i>
                                 <span><span class="block font-semibold text-stone-900 dark:text-stone-100">The Collector</span><span class="block text-xs font-normal text-stone-500 dark:text-stone-400">Two separated archives, rejoined for teaching</span></span>
                             </button>
+                            <button role="menuitem" data-page="timelines" onclick="switchPage('timelines')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-warmbg-100 dark:hover:bg-stone-800 transition flex items-start gap-3">
+                                <i data-lucide="check" class="menu-check w-4 h-4 mt-0.5 flex-none"></i>
+                                <span><span class="block font-semibold text-stone-900 dark:text-stone-100">Timelines</span><span class="block text-xs font-normal text-stone-500 dark:text-stone-400">ClioVis timelines and digital pedagogy</span></span>
+                            </button>
+                            <button role="menuitem" data-page="newsletter" onclick="switchPage('newsletter')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-warmbg-100 dark:hover:bg-stone-800 transition flex items-start gap-3">
+                                <i data-lucide="check" class="menu-check w-4 h-4 mt-0.5 flex-none"></i>
+                                <span><span class="block font-semibold text-stone-900 dark:text-stone-100">One One Cocoa</span><span class="block text-xs font-normal text-stone-500 dark:text-stone-400">Newsletter on public history, primary sources, and art</span></span>
+                            </button>
                         </div>
                     </div>
-                    <button data-page="publications" onclick="switchPage('publications')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Published Writing</button>
+                    <button data-page="publications" onclick="switchPage('publications')" class="py-2 hover:text-stone-900 dark:hover:text-stone-100 transition">Writing</button>
                     <!-- Dark Mode Toggle -->
                     <button type="button" onclick="toggleDarkMode()" class="p-2 rounded-md hover:bg-warmbg-200 dark:hover:bg-stone-800 transition" aria-label="Toggle dark mode">
                         <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-stone-300"></i>
@@ -176,8 +188,10 @@
                 <button data-page="archive" onclick="switchPage('archive'); toggleMobileMenu()" class="block w-full text-left py-2 pl-3 text-stone-700 dark:text-stone-300">Miss Floss and the Loggers</button>
                 <button data-page="hearing" onclick="switchPage('hearing'); toggleMobileMenu()" class="block w-full text-left py-2 pl-3 text-stone-700 dark:text-stone-300">The Mashpee Hearing, 1869</button>
                 <button data-page="collector" onclick="switchPage('collector'); toggleMobileMenu()" class="block w-full text-left py-2 pl-3 text-stone-700 dark:text-stone-300">The Collector</button>
+                <button data-page="timelines" onclick="switchPage('timelines'); toggleMobileMenu()" class="block w-full text-left py-2 pl-3 text-stone-700 dark:text-stone-300">Timelines</button>
+                <button data-page="newsletter" onclick="switchPage('newsletter'); toggleMobileMenu()" class="block w-full text-left py-2 pl-3 text-stone-700 dark:text-stone-300">One One Cocoa Newsletter</button>
             </div>
-            <button data-page="publications" onclick="switchPage('publications'); toggleMobileMenu()" class="block w-full text-left py-2 text-stone-700 dark:text-stone-300">Published Writing</button>
+            <button data-page="publications" onclick="switchPage('publications'); toggleMobileMenu()" class="block w-full text-left py-2 text-stone-700 dark:text-stone-300">Writing</button>
         </div>
     </header>
 
@@ -186,9 +200,12 @@
 
             <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_16rem] gap-8 md:gap-10">
             <div class="space-y-6">
-                <h1 class="font-serif text-4xl sm:text-5xl font-normal text-stone-900 dark:text-stone-100 tracking-tight leading-tight">
-                    Alina Scott, PhD
-                </h1>
+                <div class="flex items-center gap-5 sm:gap-6">
+                    <img src="images/alina.jpg" alt="Portrait of Alina Scott" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover flex-none border-4 border-white dark:border-stone-800 shadow-md bg-warmbg-100 dark:bg-stone-800" style="object-position:50% 30%" onerror="this.remove()">
+                    <h1 class="font-serif text-4xl sm:text-5xl font-normal text-stone-900 dark:text-stone-100 tracking-tight leading-tight">
+                        Alina Scott, PhD
+                    </h1>
+                </div>
 
                 <div class="text-lg sm:text-xl text-stone-700 dark:text-stone-300 leading-relaxed font-serif space-y-5">
                     <p>
@@ -246,10 +263,20 @@
                                 
                             </div>
                         </a>
+                        <div class="md:col-span-2"><a href="#newsletter" onclick="event.preventDefault(); switchPage('newsletter')" class="group flex flex-col sm:flex-row bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                            <div class="relative sm:w-1/2 aspect-[16/10] sm:aspect-auto sm:min-h-[16rem] overflow-hidden bg-warmbg-100 dark:bg-stone-800"><img src="images/newsletter.jpg" alt="The red-brick Gay Head Light on Aquinnah, Martha's Vineyard, beside a hand-drawn sketch of an earlier lighthouse, with the sound and shoreline behind." loading="lazy" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105" style="object-position:40% 50%"></div>
+                            <div class="p-6 flex flex-col gap-2 flex-1">
+                                <p class="text-[11px] uppercase tracking-widest text-stone-500 dark:text-stone-400 font-semibold">Newsletter on Substack</p>
+                                <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">One One Cocoa</h3>
+                                <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">Essays on public history, primary sources, and art in conversation, from Wampanoag homelands and the New Deal slavery narratives to Garifuna music and the mapping of Everest.</p>
+                                <div class="mt-auto pt-3 flex items-end justify-between gap-4"><span class="text-xs font-semibold text-stone-800 dark:text-stone-300 inline-flex items-center gap-1">Read the Essays <i data-lucide="arrow-right" class="w-3 h-3 transition group-hover:translate-x-0.5"></i></span></div>
+                                <p class="text-[11px] text-stone-400 dark:text-stone-500 leading-snug pt-2 border-t border-warmbg-200 dark:border-stone-800 mt-2">Gay Head Light, Aquinnah.</p>
+                            </div>
+                        </a></div>
                         <div class="md:col-span-2"><a href="#publications" onclick="event.preventDefault(); switchPage('publications')" class="group block p-6 bg-white dark:bg-stone-900 border border-warmbg-200 dark:border-stone-800 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition duration-300 ">
                             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                                 <div class="space-y-1">
-                                    <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Published Writing</h3>
+                                    <h3 class="font-serif font-semibold text-lg text-stone-900 dark:text-stone-100 group-hover:underline">Writing</h3>
                                     <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed max-w-xl">Public history writing, conference talks, and podcast episodes on Native American and African American history.</p>
                                 </div>
                                 <span class="text-xs font-semibold text-stone-800 dark:text-stone-300 inline-flex items-center gap-1">View Publications <i data-lucide="arrow-right" class="w-3 h-3 transition group-hover:translate-x-0.5"></i></span>
@@ -388,11 +415,152 @@
             </div>
         </section>
 
+        <section id="page-timelines" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-10">
+            <div class="border-b border-warmbg-200 dark:border-stone-800 pb-6 space-y-2">
+                <span class="text-xs uppercase tracking-widest text-stone-500 font-semibold">Digital Pedagogy &amp; Educational Technology</span>
+                <h1 class="font-serif text-3xl sm:text-4xl font-normal text-stone-900 dark:text-stone-100">Timelines</h1>
+                <p class="text-stone-600 dark:text-stone-400 text-sm max-w-3xl leading-relaxed">
+                    Interactive timelines built in ClioVis, a visual timeline platform developed at the University of Texas at Austin, and the teaching practice around them: periodization, causation, and connection made visible, and history slowed down enough to think with.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+                    <div>
+                        <h2 class="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100">Violence Against Black People in America</h2>
+                        <p class="text-xs text-stone-500 dark:text-stone-400 mt-1">Haley Price, with Alina Scott and William Jones &middot; <em>Not Even Past</em>, 2020</p>
+                    </div>
+                    <a id="cv-open" href="https://embed.cliovis.com/v2/app/e/snapshot_8c569ae2-d938-434b-8050-045c4138a5e0/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 hover:underline whitespace-nowrap">Open full screen <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
+                </div>
+                <div class="flex flex-wrap gap-2" role="tablist" aria-label="Timeline sections">
+                    <button type="button" role="tab" data-src="https://embed.cliovis.com/v2/app/e/snapshot_8c569ae2-d938-434b-8050-045c4138a5e0/" data-desc="Context for the 2020 BLM protests, 153 events" aria-selected="true" onclick="selectTimeline(this)" class="cv-tab px-3 py-1.5 rounded-full text-xs font-semibold border border-warmbg-200 dark:border-stone-700 transition">Overview</button>
+                    <button type="button" role="tab" data-src="https://embed.cliovis.com/v2/app/e/snapshot_363c7eb5-7074-44c1-a7e1-5ef01c103829/" data-desc="Colonial slave codes through 1860" aria-selected="false" onclick="selectTimeline(this)" class="cv-tab px-3 py-1.5 rounded-full text-xs font-semibold border border-warmbg-200 dark:border-stone-700 transition">I. Slavery in America</button>
+                    <button type="button" role="tab" data-src="https://embed.cliovis.com/v2/app/e/snapshot_cc8eac9f-4852-4d1e-908f-d8b11c6e53d2/" data-desc="1860 onward, centering Black voices and scholarship" aria-selected="false" onclick="selectTimeline(this)" class="cv-tab px-3 py-1.5 rounded-full text-xs font-semibold border border-warmbg-200 dark:border-stone-700 transition">II. Jim Crow to Civil Rights</button>
+                    <button type="button" role="tab" data-src="https://embed.cliovis.com/v2/app/e/snapshot_0bbc6f87-da54-48fa-8e6a-b1c8bfa4bd12/" data-desc="Protest, legislation, and presidential power" aria-selected="false" onclick="selectTimeline(this)" class="cv-tab px-3 py-1.5 rounded-full text-xs font-semibold border border-warmbg-200 dark:border-stone-700 transition">III. Police and Civilian Brutality</button>
+                </div>
+                <div class="bg-white dark:bg-stone-900 rounded-xl border border-warmbg-200 dark:border-stone-800 overflow-hidden shadow-sm">
+                    <iframe id="cv-frame" src="https://embed.cliovis.com/v2/app/e/snapshot_8c569ae2-d938-434b-8050-045c4138a5e0/" title="ClioVis timeline: Violence Against Black People in America" class="w-full h-[600px] border-0" loading="lazy" allowfullscreen></iframe>
+                </div>
+                <p id="cv-desc" class="text-xs text-stone-500 dark:text-stone-400">Context for the 2020 BLM protests, 153 events. Click points, connections, and eras to read about events; use presentation mode to move through the timeline chronologically.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800 space-y-3">
+                    <h2 class="font-serif text-lg font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2"><i data-lucide="git-commit-horizontal" class="w-5 h-5 text-bronze-600 dark:text-stone-400"></i> About the project</h2>
+                    <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">Begun in the summer of 2020 by Digital History intern Haley Price, the project grew from a single timeline into four, tracing the long history behind the 2020 protests from colonial slave codes to the present. I edited the post-1860 timelines for content and sources, adding scholarship by Black authors and materials readers can reach outside the academy, including e-books, podcasts, and documentaries. The aim was to show the continuity of antiblackness from the highest levels of government to state and local institutions, alongside Black resistance and resilience.</p>
+                    <a href="https://notevenpast.org/violence-against-black-people-in-america-a-cliovis-timeline/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 hover:underline">Read the article on Not Even Past <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
+                </div>
+                <div class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800 space-y-3">
+                    <h2 class="font-serif text-lg font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-bronze-600 dark:text-stone-400"></i> ClioVis mentor</h2>
+                    <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">As a ClioVis mentor, I help students and instructors move from a list of dates to an argument: choosing events, drawing connections, and defining the eras that give a story its shape. I use ClioVis alongside close-reading tools in my own Introduction to Native American History course, and I lead workshops on ClioVis as intentional pedagogy, including a session with Erika Bsumek at the 2026 Texas Conference on Introductory History Courses. In a moment of fast answers from AI, periodization is a way to practice slow history.</p>
+                </div>
+                <div class="md:col-span-2 bg-white dark:bg-stone-900 p-6 rounded-xl border border-warmbg-200 dark:border-stone-800 space-y-3">
+                    <h2 class="font-serif text-lg font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2"><i data-lucide="graduation-cap" class="w-5 h-5 text-bronze-600 dark:text-stone-400"></i> Educational Technology Fellow</h2>
+                    <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">As the Educational Technology Postdoctoral Fellow in the College of Liberal Arts and the Department of History at the University of Texas at Austin, I work with faculty who want to bring digital tools and critical digital pedagogy into their courses. That work ranges from building timeline and mapping assignments to thinking carefully about where AI belongs in the history classroom, and where it does not. The question running through all of it is the one ClioVis asks students: how do we see change over time, and who gets to draw the connections?</p>
+                    <a href="https://cliovis.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 hover:underline">Visit ClioVis <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-newsletter" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-10">
+            <div class="border-b border-warmbg-200 dark:border-stone-800 pb-6 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-stone-500 font-semibold">Newsletter</span>
+                <h1 class="font-serif text-3xl sm:text-4xl font-normal text-stone-900 dark:text-stone-100">One One Cocoa</h1>
+                <p class="text-stone-600 dark:text-stone-400 text-sm max-w-3xl leading-relaxed">
+                    A Substack newsletter on public history, primary sources, and art in conversation. Each essay begins with a document, a song, a photograph, or a place, and follows it outward into the histories it holds, from Wampanoag homelands and the New Deal slavery narratives to Garifuna music and the mapping of Everest.
+                </p>
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <a href="https://alinascott.substack.com/subscribe" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-stoneAccent-800 dark:bg-stone-200 text-warmbg-50 dark:text-stone-950 text-sm font-semibold hover:opacity-90 transition"><i data-lucide="mail" class="w-4 h-4"></i> Subscribe</a>
+                    <a href="https://alinascott.substack.com/archive" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-warmbg-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 text-sm font-semibold hover:bg-warmbg-100 dark:hover:bg-stone-800 transition">Full archive <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h2 class="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2">
+                    <i data-lucide="newspaper" class="w-5 h-5 text-bronze-600 dark:text-stone-400"></i> Essays
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <a href="https://alinascott.substack.com/p/monty-pythons-church-organ-a-history" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Oct 12, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">Monty Python's Church Organ: A History of the Zacuan or the Montezuma's Oropendela</h3>
+                        
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/thickly-settled-a-week-in-wampanoag" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Sep 10, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">&ldquo;Thickly Settled&rdquo;: A Week in Wampanoag Land</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">Mashpee and Aquinnahland</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/whose-america-250-reflections-of" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Aug 12, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">Whose America 250: Reflections of an Early Career Historian</h3>
+                        
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/30-plus-some-the-many-lives-of-it" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Jul 2, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">30 plus some: the many lives of &ldquo;It Was A Very Good Year&rdquo;</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">Chasing a half-remembered melody down a rabbit hole of folk, disco, and rock</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/memories-of-freedom-and-unfreedom" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Jun 23, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">Memories of Freedom and Unfreedom</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">Revisiting the New Deal Era Slavery Archive</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/who-will-bake-cassava-bread-for-us" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Jun 9, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">Who Will Bake Cassava Bread For Us In Times To Come</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">On Andy Palacio</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/meeting-chomolungma-an-atlas-of-mount" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">May 13, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">Meeting Chomolungma: An Atlas of Mount Everest</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">Primary sources, imperial mapping, and the making of a mountain's history</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/introduction-one-one-cocoa" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Apr 28, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">Introduction: One One Cocoa</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">On purpose and climbing the tallest mountain in Belize</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/welcome-to-monkey-river" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Apr 25, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">Welcome To Monkey River</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">Why We Need More Historians</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/a-broadway-valhalla" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Mar 29, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">A Broadway Valhalla</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">On Lincoln, an Antigua Bookstore, and Learning to Shoot on Film</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/on-survivance" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Mar 5, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">On Survivance</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">and teaching in the era of mass shootings</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                    <a href="https://alinascott.substack.com/p/entry-1-the-united-states-of-attica" target="_blank" rel="noopener noreferrer" class="group flex flex-col bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800 hover:shadow-lg hover:-translate-y-0.5 transition duration-300">
+                        <p class="text-xs font-mono text-stone-500 uppercase">Feb 8, 2026</p>
+                        <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100 mt-1 group-hover:underline">Entry 1: The United States of Attica</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-1 italic">History and Art in Conversation</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-auto pt-3">Read on Substack <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section id="page-publications" class="page-content max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-12">
             <div class="border-b border-warmbg-200 dark:border-stone-800 pb-6 space-y-2">
                 <span class="text-xs uppercase tracking-widest text-stone-500 font-semibold">Scholarship & Writing</span>
                 <h1 class="font-serif text-3xl sm:text-4xl font-normal text-stone-900 dark:text-stone-100">
-                    Published Writing, Talks & Podcasts
+                    Writing, Talks &amp; Podcasts
                 </h1>
                 <p class="text-stone-600 dark:text-stone-400 text-sm max-w-3xl leading-relaxed">
                     Public history writing, conference presentations, and podcast episodes on Native American and African American history, kinship, petitioning, and the digital humanities.
@@ -408,30 +576,38 @@
                     <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
                         <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Cynthia Attaquin and a Wampanoag Network of Petitioners"</h3>
                         <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, 2018</p>
+                        <a href="https://notevenpast.org/cynthia-attaquin-and-a-wampanoag-network-of-petitioners/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-2 mr-4 hover:underline">Read on Not Even Past <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
                     </div>
                     <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
                         <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Missing Signatures: The Archives at First Glance"</h3>
                         <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, 2018</p>
+                        <a href="https://notevenpast.org/missing-signatures-the-archives-at-first-glance/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-2 mr-4 hover:underline">Read on Not Even Past <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
                     </div>
                     <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
                         <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Living in Good Relation with the Environment: A Syllabus of Radical Hope"</h3>
                         <p class="text-xs text-stone-500 mt-1"><em>Radical Hope Syllabus: Inspiring Sustainability Transformations Through our Past</em>, 2018</p>
+                        <a href="https://radicalhopesyllabus.com/syllabi/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-2 mr-4 hover:underline">Read the syllabus (Unit 14) <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
                     </div>
                     <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
                         <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Authorship and Advocacy: The Native American Petitions Dataverse"</h3>
                         <p class="text-xs text-stone-500 mt-1">halperta.com/criticalarchives; <em>Not Even Past</em>, 2018</p>
+                        <a href="https://notevenpast.org/authorship-and-advocacy-the-native-american-petitions-dataverse/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-2 mr-4 hover:underline">Read on Not Even Past <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
+                        <a href="https://halperta.github.io/criticalarchives/blog/napetitions-review/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-2 mr-4 hover:underline">Critical Archives <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
                     </div>
                     <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
                         <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Native Literatures and Indigenous Peoples' Day: A Brief Historiography"</h3>
                         <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, 2019</p>
+                        <a href="https://notevenpast.org/native-literatures-and-indigenous-peoples-day-a-brief-historiography/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-2 mr-4 hover:underline">Read on Not Even Past <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
                     </div>
                     <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
                         <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"New Books in Native American and Indigenous Studies You Need to Read on Indigenous Peoples' Day"</h3>
                         <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, 2020</p>
+                        <a href="https://notevenpast.org/new-books-in-native-american-and-indigenous-studies-you-need-to-read-on-indigenous-peoples-day/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-2 mr-4 hover:underline">Read on Not Even Past <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
                     </div>
                     <div class="bg-white dark:bg-stone-900 p-5 rounded-xl border border-warmbg-200 dark:border-stone-800">
                         <h3 class="font-serif font-semibold text-stone-900 dark:text-stone-100">"Resources for Teaching Black History"</h3>
                         <p class="text-xs text-stone-500 mt-1"><em>Not Even Past</em>, February 2021</p>
+                        <a href="https://notevenpast.org/resources-for-teaching-black-history/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-bronze-700 dark:text-stone-300 mt-2 mr-4 hover:underline">Read on Not Even Past <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
                     </div>
                 </div>
             </div>
@@ -540,7 +716,10 @@
                 <button data-page="archive" onclick="switchPage('archive')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Archive</button>
                 <button data-page="hearing" onclick="switchPage('hearing')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Hearing</button>
                 <button data-page="collector" onclick="switchPage('collector')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Collector</button>
+                <button data-page="timelines" onclick="switchPage('timelines')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Timelines</button>
                 <button data-page="publications" onclick="switchPage('publications')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Writing</button>
+                <button data-page="newsletter" onclick="switchPage('newsletter')" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Newsletter</button>
+                <a href="https://alinascott.substack.com/" target="_blank" rel="noopener noreferrer" class="hover:text-stone-900 dark:hover:text-stone-100 transition">Substack</a>
             </div>
         </div>
     </footer>
@@ -557,7 +736,7 @@
             });
         }
 
-        var PROJECT_PAGES = ['timeline', 'archive', 'hearing', 'collector'];
+        var PROJECT_PAGES = ['timeline', 'archive', 'hearing', 'collector', 'timelines', 'newsletter'];
 
         function toggleProjectsMenu(force) {
             const menu = document.getElementById('projects-menu');
@@ -617,6 +796,13 @@
         }
         window.addEventListener('hashchange', openPageFromHash);
         openPageFromHash();
+
+        function selectTimeline(btn) {
+            document.querySelectorAll('.cv-tab').forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+            document.getElementById('cv-frame').src = btn.dataset.src;
+            document.getElementById('cv-open').href = btn.dataset.src;
+            document.getElementById('cv-desc').firstChild.textContent = btn.dataset.desc + '. Click points, connections, and eras to read about events; use presentation mode to move through the timeline chronologically.';
+        }
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
